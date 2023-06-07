@@ -12,7 +12,7 @@ logging.basicConfig(filename='bot.log', level=logging.INFO)
 token =  'vk1.a.716sbCFj3cv7pE1ozA6EFqr2Osq6Y3Q6JAPrqkmnLBRxGH0jaNRsLf99svzrUbdO_6YG16Tk_KynPlF3kV1Kc4_aSz_7TFOZQSopNM8xIbyEQgdvNrTob41uScZiBr4KeyEPxQwcmIzgZnCWwuyCb0HseSQkJybd-BNXrFcIbCUE_WvKYvmsKhvr-DNvBK-0-zLvo0NWA9mWFhhPJ3r24A'
 
 # Время ожидания между проверками (в секундах)
-wait_time = 60 
+wait_time = 60 * 60 * 12
 
 # Авторизуемся с помощью токена
 vk_session = vk_api.VkApi(token=token)
