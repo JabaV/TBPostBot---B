@@ -20,35 +20,39 @@ vk_session = vk_api.VkApi(token=tok)
 # Получаем объект для работы с API
 vk = vk_session.get_api()
 
-# Словарь, в котором хранятся тексты записей для каждой группы
+# Получаем идентификатор бота
+bot_id = vk.users.get()[0]['id']
+
 group_posts = {
-    219775222: 'Текст записи для первой группы'
+    219775222: 'Бибурат'
 }
 
-# Получаем список групп
 group_ids = list(group_posts.keys())
 
-# Отправляем запись на стену каждой группы при запуске
-for group_id in group_ids:
-    post_text = group_posts[group_id]
-    vk.wall.post(owner_id=-group_id, message=post_text)
+# Время ожидания между проверками (в секундах)
+wait_time = 60 # для дебага пока 60, должно быть 12 * 60 * 60 для стандартной работы
 
-# Основной цикл бота
 while True:
-    # Для каждой группы проверяем наличие новых записей
     for group_id in group_ids:
-        # Получаем последнюю запись на стене группы
-        posts = vk.wall.get(owner_id=-group_id, count=1)
-        last_post = posts['items'][0] if posts['items'] else None
+        # Получаем последние 100 записей на стене группы
+        posts = vk.wall.get(owner_id=-group_id, count=100)['items']
 
-        # Если это новая запись
-        if last_post and last_post['date'] > datetime.now().timestamp() - 12*60*60:
-            # Определяем, какую запись нужно отправить на стену группы
+        # Ищем последнюю запись, сделанную ботом
+        last_bot_post = None
+        for post in posts:
+            if post['from_id'] == bot_id and post['text'] == group_posts[group_id]:
+                last_bot_post = post
+                break
+
+        if last_bot_post is None:
+            # Если бот еще ничего не опубликовал, публикуем первую запись
             post_text = group_posts[group_id]
-
-            # Отправляем запись на стену группы
             vk.wall.post(owner_id=-group_id, message=post_text)
+        else:
+            # Иначе проверяем время последней публикации
+            post_time = datetime.fromtimestamp(last_bot_post['date'])
+            if post_time <= datetime.now() - timedelta(seconds=wait_time):
+                post_text = group_posts[group_id]
+                vk.wall.post(owner_id=-group_id, message=post_text)
 
-    # Ждем 12 часов перед следующей проверкой
-    sleep(12*60*60)
-    vk_session.close()
+    sleep(wait_time)
