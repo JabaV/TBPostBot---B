@@ -104,7 +104,7 @@ while True:
                         vk.wall.post(owner_id=-group_id, message=post_text, attachments=attachment)
 
             # Ожидаем случайное количество времени между отправкой постов
-            sleep(randint(60, 530))
+            sleep(randint(60, 1074))
 
     except Exception as e:
         logging.error(traceback.format_exc())
