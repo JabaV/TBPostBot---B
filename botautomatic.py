@@ -9,7 +9,7 @@ import os
 
 keep_alive()
 # Настраиваем логирование
-logging.basicConfig(filename='bot.log', level=logging.INFO)
+logging.basicConfig(filename='bot.log', level=logging.ERROR)
 
 # Токен
 token = os.environ['token']

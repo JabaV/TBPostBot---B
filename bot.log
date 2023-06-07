@@ -1,1 +1,10 @@
 WARNING:root:Access denied for group 219775222, possibly banned
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.11:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:37:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:38:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:38:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:38:44] "HEAD / HTTP/1.1" 200 -
