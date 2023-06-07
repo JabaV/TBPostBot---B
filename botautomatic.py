@@ -2,14 +2,17 @@ import vk_api
 from datetime import datetime, timedelta
 from time import sleep
 from random import randint
+from webserver import keep_alive
 import logging
 import traceback
+import os
 
+keep_alive()
 # Настраиваем логирование
 logging.basicConfig(filename='bot.log', level=logging.INFO)
 
 # Токен
-token =  'vk1.a.716sbCFj3cv7pE1ozA6EFqr2Osq6Y3Q6JAPrqkmnLBRxGH0jaNRsLf99svzrUbdO_6YG16Tk_KynPlF3kV1Kc4_aSz_7TFOZQSopNM8xIbyEQgdvNrTob41uScZiBr4KeyEPxQwcmIzgZnCWwuyCb0HseSQkJybd-BNXrFcIbCUE_WvKYvmsKhvr-DNvBK-0-zLvo0NWA9mWFhhPJ3r24A'
+token = os.environ['token']
 
 # Время ожидания между проверками (в секундах)
 wait_time = 60 * 60 * 12
