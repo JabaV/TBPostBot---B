@@ -3,55 +3,52 @@ from vk_api.exceptions import AuthError
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.utils import get_random_id
 from datetime import datetime, timedelta
+from time import sleep
 
 # Логин и пароль пользователя
-login = '79314181505'
-password = '4Qm9sMCAkzhtcuA'
-scope = vk_api.VkUserPermissions.GROUPS + vk_api.VkUserPermissions.NOTIFICATIONS + vk_api.VkUserPermissions.WALL
+token =  'vk1.a.716sbCFj3cv7pE1ozA6EFqr2Osq6Y3Q6JAPrqkmnLBRxGH0jaNRsLf99svzrUbdO_6YG16Tk_KynPlF3kV1Kc4_aSz_7TFOZQSopNM8xIbyEQgdvNrTob41uScZiBr4KeyEPxQwcmIzgZnCWwuyCb0HseSQkJybd-BNXrFcIbCUE_WvKYvmsKhvr-DNvBK-0-zLvo0NWA9mWFhhPJ3r24A'
+tok = str(token)
 # Функция-обработчик для двухфакторной аутентификации
 def auth_handler():
     code = input("Enter authentication code: ")
     remember_device = True
     return code, remember_device
 
-# Авторизуемся как обычный пользователь
-vk_session = vk_api.VkApi(login, password, auth_handler=auth_handler, scope=scope)
-try:
-    vk_session.auth()
-except AuthError as e:
-    print(e)
+# Авторизуемся с помощью токена
+vk_session = vk_api.VkApi(token=tok)
 
 # Получаем объект для работы с API
 vk = vk_session.get_api()
 
 # Словарь, в котором хранятся тексты записей для каждой группы
 group_posts = {
-    172386457: 'Текст записи для первой группы'
+    219775222: 'Текст записи для первой группы'
 }
 
-# Получаем Long Poll сервер для первой группы
+# Получаем список групп
 group_ids = list(group_posts.keys())
-longpoll = VkLongPoll(vk_session)
+
+# Отправляем запись на стену каждой группы при запуске
+for group_id in group_ids:
+    post_text = group_posts[group_id]
+    vk.wall.post(owner_id=-group_id, message=post_text)
 
 # Основной цикл бота
 while True:
-    # Получаем новые события Long Poll API
-    events = longpoll.check()
+    # Для каждой группы проверяем наличие новых записей
+    for group_id in group_ids:
+        # Получаем последнюю запись на стене группы
+        posts = vk.wall.get(owner_id=-group_id, count=1)
+        last_post = posts['items'][0] if posts['items'] else None
 
-    # Обрабатываем каждое событие
-    for event in events:
-        # Если это новая запись на стене
-        if event.type == VkEventType.WALL_POST_NEW and event.group_id in group_ids:
+        # Если это новая запись
+        if last_post and last_post['date'] > datetime.now().timestamp() - 12*60*60:
             # Определяем, какую запись нужно отправить на стену группы
-            post_text = group_posts[event.group_id]
+            post_text = group_posts[group_id]
 
             # Отправляем запись на стену группы
-            vk.wall.post(owner_id=-event.group_id, message=post_text)
+            vk.wall.post(owner_id=-group_id, message=post_text)
 
-            # Ждем 12 часов
-            post_time = datetime.now() + timedelta(hours=12)
-            while datetime.now() < post_time:
-                pass
-
-# Завершаем сеанс
-vk_session.close()
+    # Ждем 12 часов перед следующей проверкой
+    sleep(12*60*60)
+    vk_session.close()
