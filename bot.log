@@ -1,10 +1,951 @@
-WARNING:root:Access denied for group 219775222, possibly banned
 INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:8080
  * Running on http://172.31.196.11:8080
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:37:43] "GET / HTTP/1.1" 200 -
-INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:38:18] "GET / HTTP/1.1" 200 -
-INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:38:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:38:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:43:46] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:43:46] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:43:46] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.11:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:46:03] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:48:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:53:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 18:58:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 19:03:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 19:08:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 19:13:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 19:18:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 19:23:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.136:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 21:10:59] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 21:15:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 21:20:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 21:25:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 21:30:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 21:35:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 21:40:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 21:45:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 21:50:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 21:55:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:00:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:05:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:10:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:15:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:20:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:25:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:30:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:35:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:40:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:45:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:50:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 22:55:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:00:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:05:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:10:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:15:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:20:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:25:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:30:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:35:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:40:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:45:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:50:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [07/Jun/2023 23:55:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:00:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:05:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:10:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:15:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:20:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:25:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:30:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:35:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:40:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:45:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:50:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 00:55:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:00:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:05:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:10:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:15:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:20:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:25:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:30:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:35:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:40:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:45:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:50:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 01:55:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:00:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:05:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:10:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:15:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:20:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:25:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.72:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:31:23] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:31:23] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:36:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:41:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:46:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:51:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 02:56:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:01:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:06:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:11:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:16:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:21:19] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:26:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:31:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:36:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:41:19] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:46:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:51:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 03:56:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 04:01:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 04:06:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 04:11:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 04:16:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 04:21:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 04:26:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.47:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:09:06] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:09:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:14:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:19:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:24:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:34:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:34:56] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.47:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:39:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:41:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:44:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:49:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:53:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:54:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:59:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 05:59:48] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 06:04:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 06:09:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 06:14:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 06:19:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 06:24:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 06:29:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 06:34:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 06:39:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 06:44:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 07:12:14] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 07:17:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 07:22:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 07:27:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 07:32:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 07:37:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 07:42:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 07:47:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 07:52:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 07:57:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:02:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:07:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:12:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:17:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:22:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:27:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:32:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:37:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:42:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:47:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:52:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 08:57:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:02:14] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:07:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:12:14] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:17:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:22:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:27:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:32:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:37:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:42:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:47:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:52:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 09:57:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 10:28:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 10:33:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 10:38:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 10:43:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 10:48:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 10:53:45] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 10:58:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 11:03:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 11:08:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 11:13:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 11:18:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 11:23:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 11:28:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 11:33:45] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 11:38:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 11:43:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 11:48:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 12:27:19] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 12:32:19] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 12:37:19] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 12:42:19] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 12:47:19] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 13:09:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 13:14:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 13:19:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 13:24:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 13:29:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 13:34:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 13:39:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 13:44:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 13:49:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 13:54:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 13:59:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 14:04:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 14:09:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 14:14:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 14:19:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 14:24:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 14:56:08] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 15:01:07] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 15:06:07] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 15:11:07] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 15:44:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 15:46:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 15:51:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 15:56:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 16:01:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 16:06:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 16:11:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 17:00:08] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 17:05:08] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 17:10:09] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 17:15:08] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 17:21:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 17:26:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 17:31:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 17:36:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 17:41:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 17:46:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 17:51:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 18:29:53] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 18:34:53] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 19:12:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 19:17:33] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 19:44:50] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 19:49:50] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 19:54:50] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 19:59:50] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 20:31:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 20:36:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 21:02:39] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 21:07:38] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 21:12:38] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 21:17:38] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 21:26:16] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 21:31:16] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 21:36:16] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 21:41:16] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 21:46:17] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 21:51:16] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 21:56:16] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 22:23:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 22:28:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 22:33:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.123:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 23:15:41] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 23:15:41] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 23:43:55] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 23:48:55] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [08/Jun/2023 23:53:55] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 00:18:30] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 00:23:30] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 00:28:30] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 01:02:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 01:07:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 01:28:39] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 01:33:39] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 01:38:39] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 01:43:39] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 01:48:39] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 02:16:12] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 02:21:12] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.136:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 06:08:50] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 06:08:51] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 06:13:46] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 06:42:30] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 06:47:29] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 07:03:27] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 07:08:26] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 07:13:26] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 07:18:26] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 07:23:26] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 07:28:26] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 07:56:45] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 08:01:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 08:06:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 08:26:37] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 08:31:36] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 08:36:36] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 08:41:36] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 08:46:36] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 08:51:36] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 09:14:17] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 09:19:17] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 09:24:17] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 09:29:17] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 09:59:09] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 10:04:09] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 10:09:09] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 10:21:09] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 10:26:09] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 10:31:09] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 10:36:09] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 10:41:09] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 10:46:09] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 10:51:09] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 10:57:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 11:02:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 11:07:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 11:12:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 11:17:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 11:22:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 11:27:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 11:32:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 12:03:54] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 12:08:54] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 12:13:54] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 12:22:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 12:27:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 12:32:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 12:37:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 12:42:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 12:47:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 12:52:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 13:09:11] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 13:14:11] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 13:19:11] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 13:24:12] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 13:29:11] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 13:51:00] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 14:04:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 14:09:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 14:14:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 14:19:07] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 14:24:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 14:29:07] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 15:06:10] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.6:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 16:23:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 16:28:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.4:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 21:24:10] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 21:24:10] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.40:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 22:40:34] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 22:40:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 22:45:29] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.28:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 23:48:30] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 23:48:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 23:53:26] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [09/Jun/2023 23:58:26] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 00:26:08] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 00:31:08] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 00:41:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 00:46:22] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 00:51:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 00:56:22] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 01:01:22] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 01:06:22] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 01:28:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 01:33:50] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 01:38:51] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.185:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 03:38:22] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 03:38:22] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 04:10:25] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 04:15:25] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 04:50:45] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 05:13:33] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 05:18:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 05:23:32] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 05:28:32] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 05:33:32] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 05:58:17] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 06:03:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 06:08:17] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 06:13:17] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 06:32:41] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 06:37:41] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 06:42:41] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 06:47:41] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 06:59:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 07:04:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 07:09:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 07:14:59] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 07:23:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 07:28:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 07:33:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 07:38:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 07:43:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 07:48:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 07:53:43] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 07:58:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 08:13:01] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 08:18:01] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 08:23:01] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 08:28:01] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 08:33:01] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 08:38:01] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 09:05:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 09:10:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 09:15:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 09:22:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 09:27:45] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 09:32:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 09:37:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 09:42:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 09:47:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 10:21:49] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 10:26:48] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 10:39:14] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 10:44:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 10:49:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 10:54:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 10:59:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 11:04:13] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.36:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 21:40:11] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 21:40:11] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 21:45:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 21:50:02] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 22:37:14] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 22:42:15] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 22:47:14] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 22:52:14] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 23:19:50] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 23:24:47] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 23:29:47] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [10/Jun/2023 23:34:47] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 00:13:22] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 00:18:22] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 00:23:22] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 00:28:22] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 00:33:22] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.139:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 03:57:42] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 03:57:42] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 04:02:37] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 04:52:54] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 04:57:54] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 05:02:54] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 05:07:54] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 05:36:33] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 05:41:33] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 05:46:33] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 06:08:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 06:13:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 06:18:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 07:03:53] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 07:08:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 07:13:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 07:18:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 07:23:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 07:28:53] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 07:33:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 07:54:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 07:59:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 08:04:51] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 08:34:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 08:39:07] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 08:44:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.128:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 11:30:37] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 11:30:37] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 11:36:29] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 11:41:29] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 11:46:29] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 11:51:29] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 11:56:29] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 12:01:29] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 12:24:10] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 12:29:10] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 12:34:10] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 13:25:46] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 13:30:45] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 13:35:45] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 13:40:45] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 13:52:07] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 13:57:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 14:02:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 14:07:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 14:12:06] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 14:42:57] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 14:47:57] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 14:55:45] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 15:00:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 15:05:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 15:10:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 15:15:45] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 15:20:44] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 16:04:16] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 16:09:15] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 16:14:15] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 16:19:15] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 16:24:15] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 16:37:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 16:42:20] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 16:47:20] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 16:52:20] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 17:50:33] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 17:55:33] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 18:00:32] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [11/Jun/2023 18:05:32] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.74:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 00:46:23] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 00:46:23] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 00:51:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 00:56:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 01:01:18] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 01:46:36] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 01:51:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 01:56:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 02:01:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.27:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 04:08:34] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 04:08:34] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 04:13:29] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 04:55:56] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 05:00:56] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 05:05:56] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 05:10:56] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.168:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:09:09] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:09:09] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:14:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:24:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:34:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:49:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:54:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 07:59:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:04:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:09:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:14:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:24:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:34:04] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:49:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:54:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 08:59:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:04:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:09:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:14:04] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:24:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:29:04] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:34:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:49:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:54:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 09:59:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:04:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:09:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:14:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:24:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:34:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:49:04] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:54:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 10:59:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:04:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:09:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:14:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:24:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:34:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:49:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:54:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 11:59:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:04:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:09:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:14:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:24:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:34:04] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:49:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:54:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 12:59:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:04:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:09:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:14:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:24:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:34:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:49:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:54:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 13:59:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:04:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:09:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:14:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:24:04] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:34:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:49:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:54:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 14:59:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:04:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:09:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:14:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:24:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:34:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:49:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:54:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 15:59:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:04:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:09:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:14:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:24:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:34:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:49:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:54:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 16:59:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:04:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:09:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:14:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:24:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:34:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:49:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:54:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 17:59:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 18:04:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 18:09:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 18:14:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 18:19:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 18:24:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 18:29:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 18:34:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 18:39:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 18:44:03] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.70:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 20:30:29] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 20:30:29] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 20:35:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 20:40:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 20:45:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 20:50:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 20:55:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:00:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:05:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:10:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:15:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:20:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:25:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:30:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:35:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:40:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:45:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:50:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 21:55:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:00:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:05:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:10:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:15:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:20:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:25:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:30:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:35:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:40:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:45:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:50:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 22:55:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:00:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:05:25] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:10:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:15:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:20:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:25:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:30:25] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:35:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:40:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:45:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:50:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [13/Jun/2023 23:55:25] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:00:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:05:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:10:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:15:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:20:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:25:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:30:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:35:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:40:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:45:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:50:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 00:55:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:00:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:05:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:10:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:15:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:20:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:25:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:30:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:35:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:40:25] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:45:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:50:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 01:55:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:00:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:05:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:10:25] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:15:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:20:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:25:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:30:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:35:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:40:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:45:25] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:50:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 02:55:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:00:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:05:25] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:10:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:15:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:20:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:25:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:30:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:35:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:40:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:45:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:50:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 03:55:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:00:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:05:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:10:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:15:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:20:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:25:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:30:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:35:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:40:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:45:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:50:25] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 04:55:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 05:00:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 05:05:25] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 05:10:24] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.196.94:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 05:47:58] "[33mOPTIONS * HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 05:47:58] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 05:52:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 05:57:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:02:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:07:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:12:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:17:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:22:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:27:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:32:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:37:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:42:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:47:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:52:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 06:57:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:02:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:07:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:12:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:17:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:22:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:27:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:32:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:37:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:42:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:47:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:52:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 07:57:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:02:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:07:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:12:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:17:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:22:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:27:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:32:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:37:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:42:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:47:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:52:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 08:57:52] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 09:05:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 09:10:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 09:15:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 09:20:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 09:25:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 09:30:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 09:35:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 09:40:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 09:45:36] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 09:50:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 09:55:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:00:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:05:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:10:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:15:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:20:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:25:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:30:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:35:36] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:40:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:45:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:50:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 10:55:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:00:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:05:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:10:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:15:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:20:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:25:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:30:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:35:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:40:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:45:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:50:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 11:55:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:00:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:05:36] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:10:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:15:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:20:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:25:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:30:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:35:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:40:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:45:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:50:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 12:55:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 13:00:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 13:05:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 13:10:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 13:15:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 13:20:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 13:25:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 13:30:36] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 13:35:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 13:40:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 13:45:35] "HEAD / HTTP/1.1" 200 -
+INFO:werkzeug:172.31.196.1 - - [14/Jun/2023 13:47:52] "GET / HTTP/1.1" 200 -
