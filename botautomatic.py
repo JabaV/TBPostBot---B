@@ -87,7 +87,7 @@ while True:
                         module_logger.Log(f'Cannot post in group {target_group}.' +
                                           ' Please delete it from list')
                 # спим
-                sleep(randint(60, 1074))
+                sleep(randint(60, 468))
 
     except Exception as e:
         module_logger.Log(e)
