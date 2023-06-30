@@ -125,5 +125,5 @@ while True:
                 sleep(randint(60, 468))
 
     except Exception as e:
-        module_logger.Log(e)
+        module_logger.Log(str(target_group) + e)
         sleep(60)
