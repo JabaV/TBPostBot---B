@@ -2,7 +2,6 @@ import vk_api
 from datetime import datetime, timedelta
 from time import sleep
 from random import randint
-import traceback
 from webserver import keep_alive
 from modules import module_logger
 import os
@@ -125,5 +124,5 @@ while True:
                 # спим
                 sleep(randint(60, 468))
     except Exception as e:
-        module_logger.Log(str(target_group) + ' ' + str(e) + str(traceback.format_exc()))
+        module_logger.Log(str(target_group) + ' ' + str(e))
         sleep(60)
