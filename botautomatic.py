@@ -69,16 +69,51 @@ while True:
                     if poster['from_id'] == bot_id and poster['text'] == text:
                         last_bot_post = poster
                         break
+                group = vk.groups.getById(group_id=target_group, fields='wall')
+                wall_type = group[0]['wall']
+                # если нет постов
                 if last_bot_post is None:
-                    post(target_group, text, image)
+                    # если есть предложка
+                    if wall_type == 2:
+                        # то смотрим в неё
+                        suggestet_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
+                        if len(suggestet_posts) < 1:
+                            # если там пусто, то постим
+                            post(target_group, text, image)
+                        else:
+                            # если нет, то смотрим что в ней лежит
+                            suggest_time = suggestet_posts[0]['date']
+                            if datetime.now() - suggest_time >= timedelta(days=3):
+                                # если лежит долго, то пытаемся постить снова
+                                module_logger.Log(f'Post in group {target_group} delayed for 3 days or more. Dead one?'
+                                                  f'Posting again to remind of myself')
+                                post(target_group, text, image)
+                    elif wall_type == 1:
+                        # если стена открыта, то постим
+                        post(target_group, text, image)
+                    else:
+                        # на случай если группа мертва
+                        module_logger.Log(f'Cannot post in group {target_group}.' +
+                                          ' Please delete it from list')
                 else:
-                    group = vk.groups.getById(group_id=target_group, fields='wall')
-                    wall_type = group[0]['wall']
                     post_time = datetime.fromtimestamp(last_bot_post['date'])
                     # если есть предложка, то постим по-другому
                     if wall_type == 2:
+                        # смотрим предложку
+                        suggestet_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
                         if timedelta(hours=24) <= datetime.now() - post_time <= timedelta(days=2):
-                            post(target_group, text, image)
+                            # если время для постинга удачное
+                            if len(suggestet_posts) < 1:
+                                # постим если в предложке пусто
+                                post(target_group, text, image)
+                            else:
+                                # либо смотрим когда предложили
+                                suggest_time = suggestet_posts[0]['date']
+                                if datetime.now() - suggest_time >= timedelta(days=3):
+                                    module_logger.Log(f'Post in group {target_group} delayed for 3 days or more.'
+                                                      f' Dead one?'
+                                                      f' Posting again to remind of myself')
+                                    post(target_group, text, image)
                     # если стена открыта, то постим часто
                     elif wall_type == 1:
                         if post_time <= datetime.now() - timedelta(seconds=wait_time):
