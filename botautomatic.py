@@ -82,7 +82,7 @@ while True:
                             post(target_group, text, image)
                         else:
                             # если нет, то смотрим что в ней лежит
-                            suggest_time = suggestet_posts[0]['date']
+                            suggest_time = suggestet_posts['items'][0]['date']
                             if datetime.now() - suggest_time >= timedelta(days=3):
                                 # если лежит долго, то пытаемся постить снова
                                 module_logger.Log(f'Post in group {target_group} delayed for 3 days or more. Dead one?'
@@ -108,7 +108,7 @@ while True:
                                 post(target_group, text, image)
                             else:
                                 # либо смотрим когда предложили
-                                suggest_time = suggestet_posts[0]['date']
+                                suggest_time = suggestet_posts['items'][0]['date']
                                 if datetime.now() - suggest_time >= timedelta(days=3):
                                     module_logger.Log(f'Post in group {target_group} delayed for 3 days or more.'
                                                       f' Dead one?'
@@ -125,5 +125,5 @@ while True:
                 sleep(randint(60, 468))
 
     except Exception as e:
-        module_logger.Log(str(target_group) + e)
+        module_logger.Log(str(target_group) + ' ' + str(e))
         sleep(60)
