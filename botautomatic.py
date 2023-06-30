@@ -2,6 +2,7 @@ import vk_api
 from datetime import datetime, timedelta
 from time import sleep
 from random import randint
+import traceback
 from webserver import keep_alive
 from modules import module_logger
 import os
@@ -77,13 +78,13 @@ while True:
                     if wall_type == 2:
                         # то смотрим в неё
                         suggestet_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
-                        if len(suggestet_posts) < 1:
+                        if suggestet_posts['count'] < 1:
                             # если там пусто, то постим
                             post(target_group, text, image)
                         else:
                             # если нет, то смотрим что в ней лежит
                             suggest_time = suggestet_posts['items'][0]['date']
-                            if datetime.now() - suggest_time >= timedelta(days=3):
+                            if datetime.now() - datetime.fromtimestamp(suggest_time) >= timedelta(days=3):
                                 # если лежит долго, то пытаемся постить снова
                                 module_logger.Log(f'Post in group {target_group} delayed for 3 days or more. Dead one?'
                                                   f'Posting again to remind of myself')
@@ -103,13 +104,13 @@ while True:
                         suggestet_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
                         if timedelta(hours=24) <= datetime.now() - post_time <= timedelta(days=2):
                             # если время для постинга удачное
-                            if len(suggestet_posts) < 1:
+                            if suggestet_posts['count'] < 1:
                                 # постим если в предложке пусто
                                 post(target_group, text, image)
                             else:
                                 # либо смотрим когда предложили
                                 suggest_time = suggestet_posts['items'][0]['date']
-                                if datetime.now() - suggest_time >= timedelta(days=3):
+                                if datetime.now() - datetime.fromtimestamp(suggest_time) >= timedelta(days=3):
                                     module_logger.Log(f'Post in group {target_group} delayed for 3 days or more.'
                                                       f' Dead one?'
                                                       f' Posting again to remind of myself')
@@ -122,8 +123,8 @@ while True:
                         module_logger.Log(f'Cannot post in group {target_group}.' +
                                           ' Please delete it from list')
                 # спим
-                sleep(randint(60, 468))
-
+                #sleep(randint(60, 468))
+                module_logger.Log(f'Passed group {target_group}')
     except Exception as e:
-        module_logger.Log(str(target_group) + ' ' + str(e))
+        module_logger.Log(str(target_group) + ' ' + str(e) + str(traceback.format_exc()))
         sleep(60)
