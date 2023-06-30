@@ -75,7 +75,7 @@ while True:
                 # если нет постов
                 if last_bot_post is None:
                     # если есть предложка
-                    if wall_type == 2 | wall_type == 3:
+                    if wall_type == 2 or wall_type == 3:
                         # то смотрим в неё
                         suggestet_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
                         if suggestet_posts['count'] < 1:
@@ -99,7 +99,7 @@ while True:
                 else:
                     post_time = datetime.fromtimestamp(last_bot_post['date'])
                     # если есть предложка, то постим по-другому
-                    if wall_type == 2 | wall_type == 3:
+                    if wall_type == 2 or wall_type == 3:
                         # смотрим предложку
                         suggestet_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
                         if timedelta(hours=24) <= datetime.now() - post_time <= timedelta(days=2):
