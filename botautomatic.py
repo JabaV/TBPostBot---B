@@ -66,9 +66,9 @@ while True:
                     # читает рекламный текст для конкретной группы
                     text = f.read()
 
-                with open('files/dumping.pkl', 'wb+') as p:
+                with open('files/dumping.pkl', 'rb+') as p:
                     if os.stat('files/dumping.pkl').st_size != 0:
-                        pickle.load(p)
+                        time_dict = pickle.load(p)
 
                 # смотрим время
                 last_bot_post = None
@@ -93,14 +93,14 @@ while True:
                                     post(target_group, text, image)
                                     # запоминаем что насрали
                                     time_dict[target_group] = datetime.now()
-                                    with open('files/dumping.pkl', 'rw+') as p:
+                                    with open('files/dumping.pkl', 'wb+') as p:
                                         pickle.dump(time_dict, p)
                             else:
                                 # если там пусто, то постим
                                 post(target_group, text, image)
                                 # запоминаем что насрали
                                 time_dict[target_group] = datetime.now()
-                                with open('files/dumping.pkl', 'rw+') as p:
+                                with open('files/dumping.pkl', 'wb+') as p:
                                     pickle.dump(time_dict, p)
                         else:
                             # если нет, то смотрим что в ней лежит
@@ -130,7 +130,7 @@ while True:
                                 post(target_group, text, image)
                                 # запоминаем
                                 time_dict[target_group] = datetime.now()
-                                with open('files/dumping.pkl', 'rw+') as p:
+                                with open('files/dumping.pkl', 'wb+') as p:
                                     pickle.dump(time_dict, p)
                             else:
                                 # либо смотрим когда предложили
@@ -141,7 +141,7 @@ while True:
                                                       f' Posting again to remind of myself')
                                     post(target_group, text, image)
                                     time_dict[target_group] = datetime.now()
-                                    with open('files/dumping.pkl', 'rw+') as p:
+                                    with open('files/dumping.pkl', 'wb+') as p:
                                         pickle.dump(time_dict, p)
                     # если стена открыта, то постим часто
                     elif wall_type == 1:
