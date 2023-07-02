@@ -1,0 +1,15 @@
+[2023-07-01 07:06:53.108137] 89144568 [220] Too many recipients
+[2023-07-01 12:37:58.241065] 26917262 must have exactly one of create/read/write/append mode
+[2023-07-01 14:18:14.291696] 23149964 must have exactly one of create/read/write/append mode
+[2023-07-01 17:06:04.499331] 26917262 [214] Access to adding post denied: access to the wall is closed
+[2023-07-01 18:44:34.084153] 26917262 [214] Access to adding post denied: access to the wall is closed
+[2023-07-01 20:07:22.996396] 26917262 [214] Access to adding post denied: access to the wall is closed
+[2023-07-01 21:44:15.622860] 26917262 [214] Access to adding post denied: access to the wall is closed
+[2023-07-02 00:20:55.215906] 26917262 [214] Access to adding post denied: access to the wall is closed
+[2023-07-02 01:35:54.807563] 26917262 [214] Access to adding post denied: access to the wall is closed
+[2023-07-02 03:03:14.513720] 26917262 [214] Access to adding post denied: access to the wall is closed
+[2023-07-02 04:05:14.093394] 26917262 [214] Access to adding post denied: access to the wall is closed
+[2023-07-02 06:29:56.747414] 26917262 [214] Access to adding post denied: access to the wall is closed
+[2023-07-02 07:46:11.242754] 26917262 [214] Access to adding post denied: access to the wall is closed
+[2023-07-02 08:49:49.345104] 165323387 must have exactly one of create/read/write/append mode
+[2023-07-02 11:30:19.543275] 26917262 [214] Access to adding post denied: access to the wall is closed

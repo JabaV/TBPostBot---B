@@ -4,6 +4,7 @@ from time import sleep
 from random import randint
 from webserver import keep_alive
 from modules import module_logger
+import pickle
 import os
 
 keep_alive()
@@ -18,6 +19,8 @@ vk_session = vk_api.VkApi(token=token)
 vk = vk_session.get_api()
 
 bot_id = vk.users.get()[0]['id']
+
+time_dict = {}
 
 # функция для постинга
 
@@ -63,6 +66,10 @@ while True:
                     # читает рекламный текст для конкретной группы
                     text = f.read()
 
+                with open('files/dumping.pkl', 'wb+') as p:
+                    if os.stat('files/dumping.pkl').st_size != 0:
+                        pickle.load(p)
+
                 # смотрим время
                 last_bot_post = None
                 for poster in posts:
@@ -71,6 +78,7 @@ while True:
                         break
                 group = vk.groups.getById(group_id=target_group, fields='wall')
                 wall_type = group[0]['wall']
+                vk.account.setOnline()
                 # если нет постов
                 if last_bot_post is None:
                     # если есть предложка
@@ -78,8 +86,22 @@ while True:
                         # то смотрим в неё
                         suggestet_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
                         if suggestet_posts['count'] < 1:
-                            # если там пусто, то постим
-                            post(target_group, text, image)
+                            if target_group in time_dict:
+                                if time_dict[target_group] - datetime.now() >= timedelta(days=3):
+                                    module_logger.Log(f'Post in group {target_group} timed for 3 days or more. Strange.'
+                                                  f'Posting again to remind of myself')
+                                    post(target_group, text, image)
+                                    # запоминаем что насрали
+                                    time_dict[target_group] = datetime.now()
+                                    with open('files/dumping.pkl', 'rw+') as p:
+                                        pickle.dump(time_dict, p)
+                            else:
+                                # если там пусто, то постим
+                                post(target_group, text, image)
+                                # запоминаем что насрали
+                                time_dict[target_group] = datetime.now()
+                                with open('files/dumping.pkl', 'rw+') as p:
+                                    pickle.dump(time_dict, p)
                         else:
                             # если нет, то смотрим что в ней лежит
                             suggest_time = suggestet_posts['items'][0]['date']
@@ -106,6 +128,10 @@ while True:
                             if suggestet_posts['count'] < 1:
                                 # постим если в предложке пусто
                                 post(target_group, text, image)
+                                # запоминаем
+                                time_dict[target_group] = datetime.now()
+                                with open('files/dumping.pkl', 'rw+') as p:
+                                    pickle.dump(time_dict, p)
                             else:
                                 # либо смотрим когда предложили
                                 suggest_time = suggestet_posts['items'][0]['date']
@@ -114,6 +140,9 @@ while True:
                                                       f' Dead one?'
                                                       f' Posting again to remind of myself')
                                     post(target_group, text, image)
+                                    time_dict[target_group] = datetime.now()
+                                    with open('files/dumping.pkl', 'rw+') as p:
+                                        pickle.dump(time_dict, p)
                     # если стена открыта, то постим часто
                     elif wall_type == 1:
                         if post_time <= datetime.now() - timedelta(seconds=wait_time):
@@ -122,7 +151,7 @@ while True:
                         module_logger.Log(f'Cannot post in group {target_group}.' +
                                           ' Please delete it from list')
                 # спим
-                sleep(randint(10, 468))
+                sleep(randint(30, 468))
     except Exception as e:
         module_logger.Log(str(target_group) + ' ' + str(e))
         sleep(60)
