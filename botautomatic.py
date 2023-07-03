@@ -69,6 +69,7 @@ while True:
         with open('files/groups.txt', 'r', encoding='utf-8') as file:
             # цикл построчно его читает
             while string := file.readline():
+                found = False
                 # парсит строку
                 target_group, text, image = parse(string)
                 # парсит таймер
@@ -94,13 +95,14 @@ while True:
                 # смотрим время
                 last_bot_post = None
                 for poster in posts:
-                    if poster['text'] == text:
-                        attachments = poster.get('attachments', [])
-                        for attachment in attachments:
-                            photos = attachment.get('photo', [])
-                            if int(photos['id']) == image:
-                                last_bot_post = poster
-                break
+                    if wall_type == 1:
+                        if poster['text'] == text and (poster['owner_id'] == bot_id):
+                            last_bot_post = poster
+                        break
+                    if wall_type == 2 or wall_type == 3:
+                        if poster['text'] == text and (poster['signer_id'] == bot_id):
+                            last_bot_post = poster
+                        break
 
                 group = vk.groups.getById(group_id=target_group, fields='wall')
                 wall_type = group[0]['wall']
