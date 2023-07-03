@@ -94,9 +94,14 @@ while True:
                 # смотрим время
                 last_bot_post = None
                 for poster in posts:
-                    if poster['from_id'] == bot_id and poster['text'] == text:
-                        last_bot_post = poster
-                        break
+                    if poster['text'] == text:
+                        attachments = poster.get('attachments', [])
+                        for attachment in attachments:
+                            photos = attachment.get('photo', [])
+                            if int(photos['id']) == image:
+                                last_bot_post = poster
+                break
+
                 group = vk.groups.getById(group_id=target_group, fields='wall')
                 wall_type = group[0]['wall']
                 vk.account.setOnline()

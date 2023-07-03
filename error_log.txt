@@ -16,4 +16,4 @@
 [2023-07-02 22:40:02.487553] Post in group 149527866 delayed for 3 days or more. Dead one? Posting again to remind of myself
 [2023-07-03 05:33:05.955461] Post in group 79434753 delayed for 3 days or more. Dead one? Posting again to remind of myself
 [2023-07-03 05:53:14.505946] Post in group 204935570 delayed for 3 days or more. Dead one? Posting again to remind of myself
-[2023-07-03 21:13:21.295935] 219775222 invalid literal for int() with base 10: '219775222:files/text4.txt|457239116'
+
