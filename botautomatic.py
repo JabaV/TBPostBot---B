@@ -89,7 +89,7 @@ while True:
 								if time_dict[target_group] - datetime.now() >= timedelta(days=3):
 									module_logger.Log(
 									 f'Post in group {target_group} timed for 3 days or more. Strange.'
-									 f'Posting again to remind of myself')
+									 f' Posting again to remind of myself')
 									post(target_group, text, image)
 									# запоминаем что насрали
 									time_dict[target_group] = datetime.now()
@@ -110,7 +110,7 @@ while True:
 								# если лежит долго, то пытаемся постить снова
 								module_logger.Log(
 								 f'Post in group {target_group} delayed for 3 days or more. Dead one?'
-								 f'Posting again to remind of myself')
+								 f' Posting again to remind of myself')
 								post(target_group, text, image)
 					elif wall_type == 1:
 						# если стена открыта, то постим

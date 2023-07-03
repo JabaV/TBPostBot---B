@@ -13,3 +13,6 @@
 [2023-07-02 07:46:11.242754] 26917262 [214] Access to adding post denied: access to the wall is closed
 [2023-07-02 08:49:49.345104] 165323387 must have exactly one of create/read/write/append mode
 [2023-07-02 11:30:19.543275] 26917262 [214] Access to adding post denied: access to the wall is closed
+[2023-07-02 22:40:02.487553] Post in group 149527866 delayed for 3 days or more. Dead one? Posting again to remind of myself
+[2023-07-03 05:33:05.955461] Post in group 79434753 delayed for 3 days or more. Dead one? Posting again to remind of myself
+[2023-07-03 05:53:14.505946] Post in group 204935570 delayed for 3 days or more. Dead one? Posting again to remind of myself
