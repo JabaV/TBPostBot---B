@@ -2,7 +2,7 @@
 import vk_api
 from datetime import datetime, timedelta
 from time import sleep
-# from random import randint
+from random import randint
 # from webserver import keep_alive
 from modules import module_logger
 import pickle
@@ -17,7 +17,8 @@ token = 'vk1.a' \
         '-zLvo0NWA9mWFhhPJ3r24A'
 
 # время для постинга
-wait_time = 60 * 60 * 12
+# wait_time = 60 * 60 * 12
+wait_time = 12
 
 vk_session = vk_api.VkApi(token=token)
 
@@ -92,6 +93,9 @@ while True:
                     if os.stat('files/dumping.pkl').st_size != 0:
                         time_dict = pickle.load(p)
 
+                group = vk.groups.getById(group_id=target_group, fields='wall')
+                wall_type = group[0]['wall']
+
                 # смотрим время
                 last_bot_post = None
                 for poster in posts:
@@ -104,9 +108,6 @@ while True:
                             last_bot_post = poster
                         break
 
-                group = vk.groups.getById(group_id=target_group, fields='wall')
-                wall_type = group[0]['wall']
-                vk.account.setOnline()
                 # если нет постов
                 if last_bot_post is None:
                     # если есть предложка
@@ -120,6 +121,7 @@ while True:
                                         f'Post in group {target_group} timed for 3 days or more. Strange.'
                                         f' Posting again to remind of myself')
                                     post(target_group, text, image)
+                                    vk.account.setOnline()
                                     # запоминаем что насрали
                                     time_dict[target_group] = datetime.now()
                                     with open('files/dumping.pkl', 'wb+') as p:
@@ -127,6 +129,7 @@ while True:
                             else:
                                 # если там пусто, то постим
                                 post(target_group, text, image)
+                                vk.account.setOnline()
                                 # запоминаем что насрали
                                 time_dict[target_group] = datetime.now()
                                 with open('files/dumping.pkl', 'wb+') as p:
@@ -141,9 +144,11 @@ while True:
                                     f'Post in group {target_group} delayed for 3 days or more. Dead one?'
                                     f' Posting again to remind of myself')
                                 post(target_group, text, image)
+                                vk.account.setOnline()
                     elif wall_type == 1:
                         # если стена открыта, то постим
                         post(target_group, text, image)
+                        vk.account.setOnline()
                     else:
                         # на случай если группа мертва
                         module_logger.Log(f'Cannot post in group {target_group}.' +
@@ -162,6 +167,7 @@ while True:
                             if suggestet_posts['count'] < 1:
                                 # постим если в предложке пусто
                                 post(target_group, text, image)
+                                vk.account.setOnline()
                                 # запоминаем
                                 time_dict[target_group] = datetime.now()
                                 with open('files/dumping.pkl', 'wb+') as p:
@@ -176,6 +182,7 @@ while True:
                                         f' Dead one?'
                                         f' Posting again to remind of myself')
                                     post(target_group, text, image)
+                                    vk.account.setOnline()
                                     time_dict[target_group] = datetime.now()
                                     with open('files/dumping.pkl', 'wb+') as p:
                                         pickle.dump(time_dict, p)
@@ -183,12 +190,15 @@ while True:
                     elif wall_type == 1:
                         if post_time <= datetime.now() - timedelta(seconds=timer):
                             post(target_group, text, image)
+                            vk.account.setOnline()
 
                     else:
                         module_logger.Log(f'Cannot post in group {target_group}.' +
                                           ' Please delete it from list')
                 # спим
-                # sleep(randint(30, 468))
+                sleep(randint(5, 30))
+                vk.account.setOffline()
+                sleep(randint(30, 468))
     except Exception as e:
         module_logger.Log(str(target_group) + ' ' + str(e))
         sleep(60)
