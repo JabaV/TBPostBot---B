@@ -69,15 +69,22 @@ while True:
 					if os.stat('files/dumping.pkl').st_size != 0:
 						time_dict = pickle.load(p)
 
-				# смотрим время
-				last_bot_post = None
-				for poster in posts:
-					if poster['from_id'] == bot_id and poster['text'] == text:
-						last_bot_post = poster
-						break
 				group = vk.groups.getById(group_id=target_group, fields='wall')
-				wall_type = group[0]['wall']
+                		wall_type = group[0]['wall']
+
+                		# смотрим время
+                		last_bot_post = None
+                		for poster in posts:
+                    			if wall_type == 1:
+                        			if poster['text'] == text and (poster['owner_id'] == bot_id):
+                            				last_bot_post = poster
+                       				break
+                    			if wall_type == 2 or wall_type == 3:
+                        			if poster['text'] == text and (poster['signer_id'] == bot_id):
+                            				last_bot_post = poster
+                        			break
 				vk.account.setOnline()
+		
 				# если нет постов
 				if last_bot_post is None:
 					# если есть предложка
