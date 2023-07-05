@@ -8,9 +8,10 @@ from modules import module_logger
 import pickle
 import os
 
-keep_alive()
+# keep_alive()
 
-token = os.environ['token']
+# token = os.environ['token']
+token = 'vk1.a.716sbCFj3cv7pE1ozA6EFqr2Osq6Y3Q6JAPrqkmnLBRxGH0jaNRsLf99svzrUbdO_6YG16Tk_KynPlF3kV1Kc4_aSz_7TFOZQSopNM8xIbyEQgdvNrTob41uScZiBr4KeyEPxQwcmIzgZnCWwuyCb0HseSQkJybd-BNXrFcIbCUE_WvKYvmsKhvr-DNvBK-0-zLvo0NWA9mWFhhPJ3r24A'
 
 # время для постинга
 wait_time = 60 * 60 * 12
@@ -41,6 +42,7 @@ def parse(_string: str):
     if '?' in _string:
         _image = _string[_string.find('|') + 1:_string.find('?')]
         _timer = _string[_string.find('?') + 1:]
+        _timer = int(_timer)
 
     _group = int(_group)
     _image = int(_image.replace('\n', ''))
@@ -61,6 +63,7 @@ def prepare(_text: str):
 
 
 def get_last_post(_tg: int):
+    # noinspection PyShadowingNames
     try:
         posts = vk.wall.search(owner_id=-_tg, count=1, query='Гларонд')
     except Exception as e:
@@ -75,13 +78,14 @@ def get_last_post(_tg: int):
 
 
 def check_suggests(_tg: int, time: int):
+    # noinspection PyUnusedLocal
     respond = 0
-    suggestet_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
-    if suggestet_posts['count'] < 1:
+    suggested_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
+    if suggested_posts['count'] < 1:
         if _tg in time_dict:
-            if time_dict[target_group] - datetime.now() >= timedelta(seconds=time):
+            if datetime.now() - time_dict[target_group] >= timedelta(seconds=time):
                 module_logger.Log(
-                    f'Post in group {target_group} timed for 3 days or more. Strange.'
+                    f'Post in group {target_group} timed for too many days or more. Strange.'
                     f' Posting again to remind of myself')
                 return 1
             else:
@@ -93,7 +97,7 @@ def check_suggests(_tg: int, time: int):
                 return 0
         else:
             return 1
-    suggest_time = suggestet_posts['items'][0]['date']
+    suggest_time = suggested_posts['items'][0]['date']
     if datetime.now() - datetime.fromtimestamp(suggest_time) >= timedelta(seconds=time):
         module_logger.Log(
             f'Post in group {target_group} delayed for 3 days or more. Dead one?'
@@ -120,7 +124,7 @@ while True:
                 wall_type = group[0]['wall']
 
                 if wall_type == 2 or wall_type == 3:
-                    should_post = check_suggests(target_group)
+                    should_post = check_suggests(target_group, choose_time(timer))
                     if should_post == 1:
                         post(target_group, text, image)
                 elif wall_type == 1:
@@ -129,11 +133,13 @@ while True:
                     if last_bot_post is None:
                         post(target_group, text, image)
                     else:
+                        # noinspection PyUnresolvedReferences
                         post_time = last_bot_post['date']
-                        if datetime.fromtimestamp(post_time) <= datetime.now() - timedelta(seconds=temp_time):
+                        NIGGER = datetime.now() - datetime.fromtimestamp(post_time)
+                        if datetime.now() - datetime.fromtimestamp(post_time) >= timedelta(seconds=temp_time):
                             post(target_group, text, image)
         vk.account.setOffline()
-        sleep(randint(30, 468))
+        # sleep(randint(30, 468))
     except Exception as e:
         module_logger.Log(str(target_group) + ' ' + str(e))
         sleep(60)

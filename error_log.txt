@@ -16,3 +16,10 @@
 [2023-07-02 22:40:02.487553] Post in group 149527866 delayed for 3 days or more. Dead one? Posting again to remind of myself
 [2023-07-03 05:33:05.955461] Post in group 79434753 delayed for 3 days or more. Dead one? Posting again to remind of myself
 [2023-07-03 05:53:14.505946] Post in group 204935570 delayed for 3 days or more. Dead one? Posting again to remind of myself
+[2023-07-05 11:52:08.768532] 213294396 unsupported type for timedelta seconds component: NoneType
+[2023-07-05 11:55:17.053882] Post in group 213294396 delayed for 3 days or more. Dead one? Posting again to remind of myself
+[2023-07-05 11:55:38.879352] Post in group 213294396 delayed for 3 days or more. Dead one? Posting again to remind of myself
+[2023-07-05 11:55:50.063865] Post in group 213294396 delayed for 3 days or more. Dead one? Posting again to remind of myself
+[2023-07-05 12:20:15.943808] Post in group 213294396 timed for too many days or more. Strange. Posting again to remind of myself
+[2023-07-05 12:21:48.554266] Post in group 213294396 timed for too many days or more. Strange. Posting again to remind of myself
+[2023-07-05 12:23:57.484838] Post in group 213294396 delayed for 3 days or more. Dead one? Posting again to remind of myself
