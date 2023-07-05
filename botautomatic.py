@@ -3,22 +3,17 @@ import vk_api
 from datetime import datetime, timedelta
 from time import sleep
 from random import randint
-# from webserver import keep_alive
+from webserver import keep_alive
 from modules import module_logger
 import pickle
 import os
 
-# keep_alive()
+keep_alive()
 
-# token = os.environ['token']
-token = 'vk1.a' \
-        '.716sbCFj3cv7pE1ozA6EFqr2Osq6Y3Q6JAPrqkmnLBRxGH0jaNRsLf99svzrUbdO_6YG16Tk_KynPlF3kV1Kc4_aSz_' \
-        '7TFOZQSopNM8xIbyEQgdvNrTob41uScZiBr4KeyEPxQwcmIzgZnCWwuyCb0HseSQkJybd-BNXrFcIbCUE_WvKYvmsKhvr-DNvBK-0' \
-        '-zLvo0NWA9mWFhhPJ3r24A'
+token = os.environ['token']
 
 # время для постинга
-# wait_time = 60 * 60 * 12
-wait_time = 12
+wait_time = 60 * 60 * 12
 
 vk_session = vk_api.VkApi(token=token)
 
@@ -30,8 +25,6 @@ time_dict = {}
 
 
 # функция для постинга
-
-
 def post(_target_group: int, _text: str, _image: int):
     vk.wall.post(owner_id=-_target_group,
                  message=_text,
@@ -40,165 +33,107 @@ def post(_target_group: int, _text: str, _image: int):
 
 # парсер для строк
 def parse(_string: str):
+    _timer = None
     _group, _text, _image = _string[:_string.find(':')], \
         _string[_string.find(':') + 1:_string.find('|')], \
         _string[_string.find('|') + 1:]
 
-    if '?' in _image:
-        _image = _image[:_image.find('?')]
+    if '?' in _string:
+        _image = _string[_string.find('|') + 1:_string.find('?')]
+        _timer = _string[_string.find('?') + 1:]
 
     _group = int(_group)
     _image = int(_image.replace('\n', ''))
 
-    return _group, _text, _image
+    return _group, _text, _image, _timer
 
 
-# парсер для строк, но таймер
-def timer_parse(_string: str):
-    _timer = wait_time
-    index = _string.find('?')
-    if index != -1:
-        _timer = _string[index + 1:]
-        _timer = int(_timer.replace('\n', ''))
-    return _timer
+def prepare(_text: str):
+    _time_dict = None
+    with open(_text, 'r', encoding='utf-8') as f:
+        # читает рекламный текст для конкретной группы
+        _text = f.read()
+
+    with open('files/dumping.pkl', 'rb+') as _p:
+        if os.stat('files/dumping.pkl').st_size != 0:
+            _time_dict = pickle.load(_p)
+    return _text, _time_dict
 
 
-# цикл
+def get_last_post(_tg: int):
+    try:
+        posts = vk.wall.search(owner_id=-_tg, count=1, query='Гларонд')
+    except Exception as e:
+        module_logger.Log(f'Something happened during postwatch in {target_group}\n' + str(e))
+        return -1
+    last_post = None
+    if posts['count'] < 1:
+        return last_post
+    else:
+        last_post = posts['items'][0]
+    return last_post
+
+
+def check_suggests(_tg: int, time: int):
+    respond = 0
+    suggestet_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
+    if suggestet_posts['count'] < 1:
+        if _tg in time_dict:
+            if time_dict[target_group] - datetime.now() >= timedelta(seconds=time):
+                module_logger.Log(
+                    f'Post in group {target_group} timed for 3 days or more. Strange.'
+                    f' Posting again to remind of myself')
+                return 1
+            else:
+                return 0
+        elif last_pst := get_last_post(_tg) is not None:
+            if datetime.now() - datetime.fromtimestamp(last_pst['date']) >= timedelta(seconds=time):
+                return 1
+            else:
+                return 0
+        else:
+            return 1
+    suggest_time = suggestet_posts['items'][0]['date']
+    if datetime.now() - datetime.fromtimestamp(suggest_time) >= timedelta(seconds=time):
+        module_logger.Log(
+            f'Post in group {target_group} delayed for 3 days or more. Dead one?'
+            f' Posting again to remind of myself')
+        return 1
+    return 0
+
+
+def choose_time(_timer):
+    if _timer is None:
+        return wait_time
+    else:
+        return _timer
+
+
 while True:
     try:
-        # открывает файл
         with open('files/groups.txt', 'r', encoding='utf-8') as file:
-            # цикл построчно его читает
             while string := file.readline():
-                found = False
-                # парсит строку
-                target_group, text, image = parse(string)
-                # парсит таймер
-                timer = timer_parse(string)
-                # пытаемся получить последние 100 постов
-                try:
-                    posts = vk.wall.get(owner_id=-target_group, count=100)['items']
-                # обработка ошибки если забанили
-                except Exception as e:
-                    if e.code == 15:
-                        module_logger.Log(f'Possibly banned in group with id {target_group}.\n'
-                                          f'Consider deleting this group from list')
-                        continue  # скипает группу в которой забанили
-
-                with open(text, 'r', encoding='utf-8') as f:
-                    # читает рекламный текст для конкретной группы
-                    text = f.read()
-
-                with open('files/dumping.pkl', 'rb+') as p:
-                    if os.stat('files/dumping.pkl').st_size != 0:
-                        time_dict = pickle.load(p)
+                target_group, text, image, timer = parse(string)
+                text, time_dict = prepare(text)
 
                 group = vk.groups.getById(group_id=target_group, fields='wall')
                 wall_type = group[0]['wall']
 
-                # смотрим время
-                last_bot_post = None
-                for poster in posts:
-                    if wall_type == 1:
-                        if poster['text'] == text and (poster['owner_id'] == bot_id):
-                            last_bot_post = poster
-                        break
-                    if wall_type == 2 or wall_type == 3:
-                        if poster['text'] == text and (poster['signer_id'] == bot_id):
-                            last_bot_post = poster
-                        break
-
-                # если нет постов
-                if last_bot_post is None:
-                    # если есть предложка
-                    if wall_type == 2 or wall_type == 3:
-                        # то смотрим в неё
-                        suggestet_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
-                        if suggestet_posts['count'] < 1:
-                            if target_group in time_dict:
-                                if time_dict[target_group] - datetime.now() >= timedelta(days=3):
-                                    module_logger.Log(
-                                        f'Post in group {target_group} timed for 3 days or more. Strange.'
-                                        f' Posting again to remind of myself')
-                                    post(target_group, text, image)
-                                    vk.account.setOnline()
-                                    # запоминаем что насрали
-                                    time_dict[target_group] = datetime.now()
-                                    with open('files/dumping.pkl', 'wb+') as p:
-                                        pickle.dump(time_dict, p)
-                            else:
-                                # если там пусто, то постим
-                                post(target_group, text, image)
-                                vk.account.setOnline()
-                                # запоминаем что насрали
-                                time_dict[target_group] = datetime.now()
-                                with open('files/dumping.pkl', 'wb+') as p:
-                                    pickle.dump(time_dict, p)
-                        else:
-                            # если нет, то смотрим что в ней лежит
-                            suggest_time = suggestet_posts['items'][0]['date']
-                            if datetime.now() - datetime.fromtimestamp(suggest_time) >= timedelta(
-                                    days=3):
-                                # если лежит долго, то пытаемся постить снова
-                                module_logger.Log(
-                                    f'Post in group {target_group} delayed for 3 days or more. Dead one?'
-                                    f' Posting again to remind of myself')
-                                post(target_group, text, image)
-                                vk.account.setOnline()
-                    elif wall_type == 1:
-                        # если стена открыта, то постим
+                if wall_type == 2 or wall_type == 3:
+                    should_post = check_suggests(target_group)
+                    if should_post == 1:
                         post(target_group, text, image)
-                        vk.account.setOnline()
+                elif wall_type == 1:
+                    temp_time = choose_time(timer)
+                    last_bot_post = get_last_post(target_group)
+                    if last_bot_post is None:
+                        post(target_group, text, image)
                     else:
-                        # на случай если группа мертва
-                        module_logger.Log(f'Cannot post in group {target_group}.' +
-                                          ' Please delete it from list')
-                else:
-                    post_time = datetime.fromtimestamp(last_bot_post['date'])
-                    # если есть предложка, то постим по-другому
-                    if wall_type == 2 or wall_type == 3:
-                        # смотрим предложку
-                        suggestet_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
-                        if timer == wait_time:
-                            timer *= 2
-                        if timedelta(seconds=timer) <= datetime.now() - post_time <= timedelta(
-                                days=2):
-                            # если время для постинга удачное
-                            if suggestet_posts['count'] < 1:
-                                # постим если в предложке пусто
-                                post(target_group, text, image)
-                                vk.account.setOnline()
-                                # запоминаем
-                                time_dict[target_group] = datetime.now()
-                                with open('files/dumping.pkl', 'wb+') as p:
-                                    pickle.dump(time_dict, p)
-                            else:
-                                # либо смотрим когда предложили
-                                suggest_time = suggestet_posts['items'][0]['date']
-                                if datetime.now() - datetime.fromtimestamp(suggest_time) >= timedelta(
-                                        days=3):
-                                    module_logger.Log(
-                                        f'Post in group {target_group} delayed for 3 days or more.'
-                                        f' Dead one?'
-                                        f' Posting again to remind of myself')
-                                    post(target_group, text, image)
-                                    vk.account.setOnline()
-                                    time_dict[target_group] = datetime.now()
-                                    with open('files/dumping.pkl', 'wb+') as p:
-                                        pickle.dump(time_dict, p)
-                    # если стена открыта, то постим часто
-                    elif wall_type == 1:
-                        if post_time <= datetime.now() - timedelta(seconds=timer):
+                        post_time = last_bot_post['date']
+                        if datetime.fromtimestamp(post_time) <= datetime.now() - timedelta(seconds=temp_time):
                             post(target_group, text, image)
-                            vk.account.setOnline()
-
-                    else:
-                        module_logger.Log(f'Cannot post in group {target_group}.' +
-                                          ' Please delete it from list')
-                # спим
-                sleep(randint(5, 30))
-                vk.account.setOffline()
-                sleep(randint(30, 468))
+        vk.account.setOffline()
+        sleep(randint(30, 468))
     except Exception as e:
         module_logger.Log(str(target_group) + ' ' + str(e))
         sleep(60)
