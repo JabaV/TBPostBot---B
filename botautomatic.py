@@ -64,16 +64,26 @@ def prepare(_text: str):
 
 def get_last_post(_tg: int):
     # noinspection PyShadowingNames
+    last_post = None
     try:
-        posts = vk.wall.search(owner_id=-_tg, count=1, query='Гларонд')
+        count = 2
+        while count:
+            wt = vk.groups.getById(group_id=_tg, fields='wall')[0]['wall']
+            posts = vk.wall.get(owner_id=-target_group, offset=0 if count == 2 else 100, count=100)['items']
+            if posts['count'] < 1:
+                return None
+            else:
+                if wt == 1:
+                    last_post = next((x for x in posts if x['from_id'] == bot_id), None)
+                elif wt == 2 or wt == 3:
+                    last_post = next((x for x in posts if x['signer_id'] == bot_id), None)
+            if count == 1:
+                break
+            else:
+                count -= count
     except Exception as e:
         module_logger.Log(f'Something happened during postwatch in {target_group}\n' + str(e))
         return -1
-    last_post = None
-    if posts['count'] < 1:
-        return last_post
-    else:
-        last_post = posts['items'][0]
     return last_post
 
 
@@ -81,7 +91,7 @@ def check_suggests(_tg: int, time: int):
     # noinspection PyUnusedLocal
     respond = 0
     suggested_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
-    if suggested_posts['count'] < 1:
+    if len(suggested_posts['items']) < 1:
         if _tg in time_dict:
             if datetime.now() - time_dict[target_group] >= timedelta(seconds=time):
                 module_logger.Log(
@@ -91,8 +101,11 @@ def check_suggests(_tg: int, time: int):
             else:
                 return 0
         elif last_pst := get_last_post(_tg) is not None:
-            if datetime.now() - datetime.fromtimestamp(last_pst['date']) >= timedelta(seconds=time):
-                return 1
+            if last_pst != -1:
+                if datetime.now() - datetime.fromtimestamp(last_pst['date']) >= timedelta(seconds=time):
+                    return 1
+                else:
+                    return 0
             else:
                 return 0
         else:
@@ -132,11 +145,11 @@ while True:
                     last_bot_post = get_last_post(target_group)
                     if last_bot_post is None:
                         post(target_group, text, image)
-                    else:
+                    elif last_bot_post != -1:
                         # noinspection PyUnresolvedReferences
                         post_time = last_bot_post['date']
-                        NIGGER = datetime.now() - datetime.fromtimestamp(post_time)
-                        if datetime.now() - datetime.fromtimestamp(post_time) >= timedelta(seconds=temp_time):
+                        NIGGER = datetime.fromtimestamp(vk.utils.getServerTime()) - datetime.fromtimestamp(post_time)
+                        if datetime.fromtimestamp(post_time) <= datetime.now() - timedelta(seconds=temp_time):
                             post(target_group, text, image)
         vk.account.setOffline()
         # sleep(randint(30, 468))
