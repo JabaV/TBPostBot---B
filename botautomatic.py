@@ -22,7 +22,6 @@ bot_id = vk.users.get()[0]['id']
 
 time_dict = {}
 
-
 # функция для постинга
 def post(_target_group: int, _text: str, _image: int):
     vk.wall.post(owner_id=-_target_group,
@@ -122,6 +121,7 @@ def choose_time(_timer):
         return wait_time
     else:
         return _timer
+
 
 
 while True:
