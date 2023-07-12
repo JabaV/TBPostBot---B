@@ -1,4 +1,3 @@
-# Бро, это тестовая ветка, нахуй ты сюда смотришь?
 import vk_api
 from datetime import datetime, timedelta
 from time import sleep
@@ -8,10 +7,9 @@ from modules import module_logger
 import pickle
 import os
 
-# keep_alive()
+keep_alive()
 
-# token = os.environ['token']
-token = 'vk1.a.716sbCFj3cv7pE1ozA6EFqr2Osq6Y3Q6JAPrqkmnLBRxGH0jaNRsLf99svzrUbdO_6YG16Tk_KynPlF3kV1Kc4_aSz_7TFOZQSopNM8xIbyEQgdvNrTob41uScZiBr4KeyEPxQwcmIzgZnCWwuyCb0HseSQkJybd-BNXrFcIbCUE_WvKYvmsKhvr-DNvBK-0-zLvo0NWA9mWFhhPJ3r24A'
+token = os.environ['token']
 
 # время для постинга
 wait_time = 60 * 60 * 12
@@ -148,11 +146,10 @@ while True:
                     elif last_bot_post != -1:
                         # noinspection PyUnresolvedReferences
                         post_time = last_bot_post['date']
-                        NIGGER = datetime.fromtimestamp(vk.utils.getServerTime()) - datetime.fromtimestamp(post_time)
                         if datetime.fromtimestamp(post_time) <= datetime.now() - timedelta(seconds=temp_time):
                             post(target_group, text, image)
         vk.account.setOffline()
-        # sleep(randint(30, 468))
+        sleep(randint(30, 468))
     except Exception as e:
         module_logger.Log(str(target_group) + ' ' + str(e))
         sleep(60)
