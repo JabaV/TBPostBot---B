@@ -78,10 +78,12 @@ def get_last_post(_tg: int):
                             if x['signer_id'] == bot_id:
                                 last_post = x
                                 break
-            if count == 1:
-                break
+            if last_post is None:
+                count -= 1
             else:
-                count -= count
+                count = 0
+                return last_post
+        return last_post
     except Exception as e:
         module_logger.Log(f'Something happened during postwatch in {target_group}\n' + str(e))
         return -1
@@ -101,7 +103,7 @@ def check_suggests(_tg: int, time: int):
             else:
                 return 0
         elif last_pst := get_last_post(_tg) is not None:
-            if last_pst != -1 and last_pst != 2:
+            if last_pst != -1:
                 if datetime.now() - datetime.fromtimestamp(last_pst['date']) >= timedelta(seconds=time):
                     return 1
                 else:
