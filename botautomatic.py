@@ -67,19 +67,13 @@ def get_last_post(_tg: int):
         while count:
             wt = vk.groups.getById(group_id=_tg, fields='wall')[0]['wall']
             posts = vk.wall.get(owner_id=-target_group, offset=0 if count == 2 else 100, count=100)['items']
-            if posts['count'] < 1:
+            if len(posts) < 1:
                 return None
             else:
                 if wt == 1:
-                    for x in posts:
-                        if x['from_id'] == bot_id:
-                            last_post = x
-                            break
+                    last_post = next((x for x in posts if x['from_id'] == bot_id), None)
                 elif wt == 2 or wt == 3:
-                    for x in posts:
-                        if x['signer_id'] == bot_id:
-                            last_post = x
-                            break
+                    last_post = next((x for x in posts if x['signer_id'] == bot_id), None)
             if count == 1:
                 break
             else:
@@ -142,16 +136,22 @@ while True:
                 if wall_type == 2 or wall_type == 3:
                     should_post = check_suggests(target_group, choose_time(timer))
                     if should_post == 1:
+                        vk.account.setOnline()
                         post(target_group, text, image)
+                        time_dict[target_group] = datetime.now()
+                        with open('files/dumping.pkl', 'wb+') as p:
+                            pickle.dump(time_dict, p)
                 elif wall_type == 1:
                     temp_time = choose_time(timer)
                     last_bot_post = get_last_post(target_group)
                     if last_bot_post is None:
+                        vk.account.setOnline()
                         post(target_group, text, image)
                     elif last_bot_post != -1:
                         # noinspection PyUnresolvedReferences
                         post_time = last_bot_post['date']
                         if datetime.fromtimestamp(post_time) <= datetime.now() - timedelta(seconds=temp_time):
+                            vk.account.setOnline()
                             post(target_group, text, image)
         vk.account.setOffline()
         sleep(randint(30, 468))
