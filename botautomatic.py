@@ -73,7 +73,11 @@ def get_last_post(_tg: int):
                 if wt == 1:
                     last_post = next((x for x in posts if x['from_id'] == bot_id), None)
                 elif wt == 2 or wt == 3:
-                    last_post = next((x for x in posts if x['signer_id'] == bot_id), None)
+                    for x in posts:
+                        if 'signer_id' in x:
+                            if x['signer_id'] == bot_id:
+                                last_post = x
+                                break
             if count == 1:
                 break
             else:
@@ -97,7 +101,7 @@ def check_suggests(_tg: int, time: int):
             else:
                 return 0
         elif last_pst := get_last_post(_tg) is not None:
-            if last_pst != -1:
+            if last_pst != -1 and last_pst != 2:
                 if datetime.now() - datetime.fromtimestamp(last_pst['date']) >= timedelta(seconds=time):
                     return 1
                 else:
@@ -105,7 +109,11 @@ def check_suggests(_tg: int, time: int):
             else:
                 return 0
         else:
-            return 1
+            if _tg in time_dict:
+                if datetime.now() - time_dict[target_group] >= timedelta(seconds=time):
+                    return 1
+                else:
+                    return 0
     suggest_time = suggested_posts['items'][0]['date']
     if datetime.now() - datetime.fromtimestamp(suggest_time) >= timedelta(seconds=time):
         module_logger.Log(
