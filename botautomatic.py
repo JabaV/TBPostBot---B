@@ -71,9 +71,15 @@ def get_last_post(_tg: int):
                 return None
             else:
                 if wt == 1:
-                    last_post = next((x for x in posts if x['from_id'] == bot_id), None)
+                    for x in posts:
+                        if x['from_id'] == bot_id:
+                            last_post = x
+                            break
                 elif wt == 2 or wt == 3:
-                    last_post = next((x for x in posts if x['signer_id'] == bot_id), None)
+                    for x in posts:
+                        if x['signer_id'] == bot_id:
+                            last_post = x
+                            break
             if count == 1:
                 break
             else:
@@ -86,7 +92,6 @@ def get_last_post(_tg: int):
 
 def check_suggests(_tg: int, time: int):
     # noinspection PyUnusedLocal
-    respond = 0
     suggested_posts = vk.wall.get(owner_id=-target_group, filter='suggests')
     if len(suggested_posts['items']) < 1:
         if _tg in time_dict:
