@@ -1,0 +1,470 @@
+[2023-08-12 11:17:27.793693] Now working with group 219775222
+[2023-08-12 11:17:28.161630] Got the wall type
+[2023-08-12 11:17:28.161747] Choosed time to post
+[2023-08-12 11:17:29.871173] Found a post, but I need another one
+[2023-08-12 11:17:30.391496] Sleep for next iteration
+[2023-08-12 11:17:30.392583] Now working with group 202986146
+[2023-08-12 11:17:30.959849] Got the wall type
+[2023-08-12 11:17:30.960011] Choosed time to post
+[2023-08-12 11:17:32.802276] Found a post, but I need another one
+[2023-08-12 11:17:33.326293] Sleep for next iteration
+[2023-08-12 11:17:33.327391] Now working with group 143264453
+[2023-08-12 11:17:33.854806] Got the wall type
+[2023-08-12 11:17:33.854953] Choosed time to post
+[2023-08-12 11:17:38.114657] Can't find my post! Posting right now...
+[2023-08-12 11:17:39.814303] Sleep for next iteration
+[2023-08-12 11:17:39.814924] Now working with group 76358028
+[2023-08-12 11:17:40.360013] Got the wall type
+[2023-08-12 11:17:40.360132] Choosed time to post
+[2023-08-12 11:17:42.377917] Found a post, but I need another one
+[2023-08-12 11:17:44.019398] Sleep for next iteration
+[2023-08-12 11:17:44.020217] Now working with group 210665654
+[2023-08-12 11:17:44.572713] Got the wall type
+[2023-08-12 11:17:44.572834] Choosed time to post
+[2023-08-12 11:17:47.992412] Can't find my post! Posting right now...
+[2023-08-12 11:17:49.743989] Sleep for next iteration
+[2023-08-12 11:17:49.744501] Now working with group 148920908
+[2023-08-12 11:17:50.289019] Got the wall type
+[2023-08-12 11:17:50.289176] Choosed time to post
+[2023-08-12 11:17:54.406287] Can't find my post! Posting right now...
+[2023-08-12 11:17:56.136886] Sleep for next iteration
+[2023-08-12 11:17:56.137426] Now working with group 166151103
+[2023-08-12 11:17:56.673659] Got the wall type
+[2023-08-12 11:17:56.674080] Choosed time to post
+[2023-08-12 11:17:58.741718] Found a post, but I need another one
+[2023-08-12 11:18:00.446501] Sleep for next iteration
+[2023-08-12 11:18:00.447062] Now working with group 39445591
+[2023-08-12 11:18:01.021861] Got the wall type
+[2023-08-12 11:18:01.022032] Choosed time to post
+[2023-08-12 11:18:05.567641] Can't find my post! Posting right now...
+[2023-08-12 11:18:07.238927] Sleep for next iteration
+[2023-08-12 11:18:07.239401] Now working with group 149527866
+[2023-08-12 11:18:07.764241] Got the wall type
+[2023-08-12 11:18:10.613145] Should I post here?
+[2023-08-12 11:18:10.613211] Definitly yes
+[2023-08-12 11:18:11.786289] Posted and saved time
+[2023-08-12 11:18:12.372891] Sleep for next iteration
+[2023-08-12 11:18:12.373607] Now working with group 194167931
+[2023-08-12 11:18:12.908614] Got the wall type
+[2023-08-12 11:18:12.908725] Choosed time to post
+[2023-08-12 11:18:16.687587] Found a post, but I need another one
+[2023-08-12 11:18:18.398161] Sleep for next iteration
+[2023-08-12 11:18:18.399019] Now working with group 116905647
+[2023-08-12 11:18:18.956057] Got the wall type
+[2023-08-12 11:18:18.956181] Choosed time to post
+[2023-08-12 11:18:23.361738] Can't find my post! Posting right now...
+[2023-08-12 11:18:25.022713] Sleep for next iteration
+[2023-08-12 11:18:25.023250] Now working with group 166679266
+[2023-08-12 11:18:25.567733] Got the wall type
+[2023-08-12 11:18:25.567887] Choosed time to post
+[2023-08-12 11:18:29.456093] Can't find my post! Posting right now...
+[2023-08-12 11:18:31.151878] Sleep for next iteration
+[2023-08-12 11:18:31.152730] Now working with group 165323387
+[2023-08-12 11:18:31.681691] Got the wall type
+[2023-08-12 11:18:34.583543] Should I post here?
+[2023-08-12 11:18:34.583599] Definitly yes
+[2023-08-12 11:18:35.705083] Posted and saved time
+[2023-08-12 11:18:36.253859] Sleep for next iteration
+[2023-08-12 11:18:36.254291] Now working with group 187281757
+[2023-08-12 11:18:36.785555] Got the wall type
+[2023-08-12 11:18:36.785691] Choosed time to post
+[2023-08-12 11:18:41.080401] Can't find my post! Posting right now...
+[2023-08-12 11:18:42.783680] Sleep for next iteration
+[2023-08-12 11:18:42.784365] Now working with group 76234877
+[2023-08-12 11:18:43.361588] Got the wall type
+[2023-08-12 11:18:43.361781] Choosed time to post
+[2023-08-12 11:18:47.421912] Can't find my post! Posting right now...
+[2023-08-12 11:18:49.104180] Sleep for next iteration
+[2023-08-12 11:18:49.104922] Now working with group 159281086
+[2023-08-12 11:18:49.631734] Got the wall type
+[2023-08-12 11:18:49.631848] Choosed time to post
+[2023-08-12 11:18:53.241978] Can't find my post! Posting right now...
+[2023-08-12 11:18:54.978642] Sleep for next iteration
+[2023-08-12 11:18:54.979695] Now working with group 181321954
+[2023-08-12 11:18:55.564420] Got the wall type
+[2023-08-12 11:18:55.564719] Choosed time to post
+[2023-08-12 11:18:59.633223] Can't find my post! Posting right now...
+[2023-08-12 11:19:01.364769] Sleep for next iteration
+[2023-08-12 11:19:01.365204] Now working with group 152508197
+[2023-08-12 11:19:01.897884] Got the wall type
+[2023-08-12 11:19:01.898004] Choosed time to post
+[2023-08-12 11:19:05.796693] Can't find my post! Posting right now...
+[2023-08-12 11:19:07.506730] Sleep for next iteration
+[2023-08-12 11:19:07.507372] Now working with group 38870044
+[2023-08-12 11:19:08.058523] Got the wall type
+[2023-08-12 11:19:08.058674] Choosed time to post
+[2023-08-12 11:19:12.315392] Can't find my post! Posting right now...
+[2023-08-12 11:19:14.067277] Sleep for next iteration
+[2023-08-12 11:19:14.068181] Now working with group 59797865
+[2023-08-12 11:19:14.600621] Got the wall type
+[2023-08-12 11:19:17.618087] Should I post here?
+[2023-08-12 11:19:17.618134] Definitly yes
+[2023-08-12 11:19:18.750420] Posted and saved time
+[2023-08-12 11:19:19.279677] Sleep for next iteration
+[2023-08-12 11:19:19.280201] Now working with group 204935570
+[2023-08-12 11:19:19.814972] Got the wall type
+[2023-08-12 11:19:25.099198] Should I post here?
+[2023-08-12 11:19:25.099285] Definitly yes
+[2023-08-12 11:19:26.162483] Posted and saved time
+[2023-08-12 11:19:26.684150] Sleep for next iteration
+[2023-08-12 11:19:26.684664] Now working with group 23149964
+[2023-08-12 11:19:27.266423] Got the wall type
+[2023-08-12 11:19:32.490630] Should I post here?
+[2023-08-12 11:19:32.490699] Definitly yes
+[2023-08-12 11:19:33.662201] Posted and saved time
+[2023-08-12 11:19:34.181979] Sleep for next iteration
+[2023-08-12 11:19:34.182441] Now working with group 148408935
+[2023-08-12 11:19:34.758839] Got the wall type
+[2023-08-12 11:19:34.758963] Choosed time to post
+[2023-08-12 11:19:38.875045] Can't find my post! Posting right now...
+[2023-08-12 11:19:40.569616] Sleep for next iteration
+[2023-08-12 11:19:40.570276] Now working with group 60154935
+[2023-08-12 11:19:41.180413] Got the wall type
+[2023-08-12 11:19:41.180641] Choosed time to post
+[2023-08-12 11:19:45.436068] Can't find my post! Posting right now...
+[2023-08-12 11:19:47.131621] Sleep for next iteration
+[2023-08-12 11:19:47.132053] Now working with group 204238095
+[2023-08-12 11:19:47.657685] Got the wall type
+[2023-08-12 11:19:47.657892] Choosed time to post
+[2023-08-12 11:19:52.352064] Found a post, but I need another one
+[2023-08-12 11:19:54.082688] Sleep for next iteration
+[2023-08-12 11:19:54.089506] Now working with group 217328096
+[2023-08-12 11:19:54.618456] Got the wall type
+[2023-08-12 11:19:54.618598] Choosed time to post
+[2023-08-12 11:19:57.021294] Found a post, but I need another one
+[2023-08-12 11:19:58.744597] Sleep for next iteration
+[2023-08-12 11:19:58.745616] Now working with group 204799482
+[2023-08-12 11:19:59.298962] Got the wall type
+[2023-08-12 11:20:04.814836] Should I post here?
+[2023-08-12 11:20:04.814897] Definitly yes
+[2023-08-12 11:20:05.991099] Posted and saved time
+[2023-08-12 11:20:06.558679] Sleep for next iteration
+[2023-08-12 11:20:06.559167] Now working with group 24734765
+[2023-08-12 11:20:07.096996] Got the wall type
+[2023-08-12 11:20:11.971751] Should I post here?
+[2023-08-12 11:20:11.983568] Definitly yes
+[2023-08-12 11:20:13.131940] Posted and saved time
+[2023-08-12 11:20:13.660724] Sleep for next iteration
+[2023-08-12 11:20:13.661142] Now working with group 207600117
+[2023-08-12 11:20:14.272926] Got the wall type
+[2023-08-12 11:20:20.008346] Should I post here?
+[2023-08-12 11:20:20.009002] Definitly yes
+[2023-08-12 11:20:21.097822] Posted and saved time
+[2023-08-12 11:20:21.686386] Sleep for next iteration
+[2023-08-12 11:20:21.687700] Now working with group 54959062
+[2023-08-12 11:20:22.520899] Got the wall type
+[2023-08-12 11:20:28.150929] Should I post here?
+[2023-08-12 11:20:28.151010] Definitly yes
+[2023-08-12 11:20:29.394981] Posted and saved time
+[2023-08-12 11:20:30.050962] Sleep for next iteration
+[2023-08-12 11:20:30.101801] Now working with group 217329267
+[2023-08-12 11:20:30.622730] Got the wall type
+[2023-08-12 11:20:33.371282] Should I post here?
+[2023-08-12 11:20:33.371313] Definitly yes
+[2023-08-12 11:20:34.589978] Posted and saved time
+[2023-08-12 11:20:35.147550] Sleep for next iteration
+[2023-08-12 11:20:35.174148] Now working with group 25497833
+[2023-08-12 11:20:35.782196] Got the wall type
+[2023-08-12 11:20:41.090386] Should I post here?
+[2023-08-12 11:20:41.090433] Definitly yes
+[2023-08-12 11:20:42.260547] Posted and saved time
+[2023-08-12 11:20:42.809410] Sleep for next iteration
+[2023-08-12 11:20:42.813697] Now working with group 217331079
+[2023-08-12 11:20:43.356371] Got the wall type
+[2023-08-12 11:20:46.407371] Should I post here?
+[2023-08-12 11:20:46.407498] Definitly yes
+[2023-08-12 11:20:47.559725] Posted and saved time
+[2023-08-12 11:20:48.114162] Sleep for next iteration
+[2023-08-12 11:20:48.114699] Now working with group 146098528
+[2023-08-12 11:20:48.697374] Got the wall type
+[2023-08-12 11:20:53.859942] Should I post here?
+[2023-08-12 11:20:53.860075] Definitly yes
+[2023-08-12 11:20:55.098759] Posted and saved time
+[2023-08-12 11:20:55.689301] Sleep for next iteration
+[2023-08-12 11:20:55.690827] Now working with group 156716828
+[2023-08-12 11:20:56.381939] Got the wall type
+[2023-08-12 11:21:01.662967] Should I post here?
+[2023-08-12 11:21:01.663074] Definitly yes
+[2023-08-12 11:21:02.875381] Posted and saved time
+[2023-08-12 11:21:03.408049] Sleep for next iteration
+[2023-08-12 11:21:03.412570] Now working with group 51153697
+[2023-08-12 11:21:03.938197] Got the wall type
+[2023-08-12 11:21:09.669099] Should I post here?
+[2023-08-12 11:21:09.669129] Definitly yes
+[2023-08-12 11:21:10.840388] Posted and saved time
+[2023-08-12 11:21:11.388170] Sleep for next iteration
+[2023-08-12 11:21:11.391486] Now working with group 159284476
+[2023-08-12 11:21:11.930809] Got the wall type
+[2023-08-12 11:21:17.515008] Should I post here?
+[2023-08-12 11:21:17.515965] Definitly yes
+[2023-08-12 11:21:18.790793] Posted and saved time
+[2023-08-12 11:21:19.364290] Sleep for next iteration
+[2023-08-12 11:21:19.371080] Now working with group 40905595
+[2023-08-12 11:21:19.980215] Got the wall type
+[2023-08-12 11:21:25.990825] Should I post here?
+[2023-08-12 11:21:25.990940] Definitly yes
+[2023-08-12 11:21:27.118542] Posted and saved time
+[2023-08-12 11:21:27.676445] Sleep for next iteration
+[2023-08-12 11:21:27.676996] Now working with group 69874754
+[2023-08-12 11:21:28.206066] Got the wall type
+[2023-08-12 11:21:33.732678] Should I post here?
+[2023-08-12 11:21:33.733148] Definitly yes
+[2023-08-12 11:21:35.003147] Posted and saved time
+[2023-08-12 11:21:35.629435] Sleep for next iteration
+[2023-08-12 11:21:35.633816] Now working with group 56899913
+[2023-08-12 11:21:36.180620] Got the wall type
+[2023-08-12 11:21:41.268497] Should I post here?
+[2023-08-12 11:21:41.270003] Definitly yes
+[2023-08-12 11:21:42.481801] Posted and saved time
+[2023-08-12 11:21:43.086736] Sleep for next iteration
+[2023-08-12 11:21:43.087544] Now working with group 30365191
+[2023-08-12 11:21:43.687748] Got the wall type
+[2023-08-12 11:21:48.951329] Should I post here?
+[2023-08-12 11:21:48.951403] Definitly yes
+[2023-08-12 11:21:50.184841] Posted and saved time
+[2023-08-12 11:21:50.774397] Sleep for next iteration
+[2023-08-12 11:21:50.776676] Now working with group 139455730
+[2023-08-12 11:21:51.375160] Got the wall type
+[2023-08-12 11:21:56.456431] Should I post here?
+[2023-08-12 11:21:56.456499] Definitly yes
+[2023-08-12 11:21:57.714264] Posted and saved time
+[2023-08-12 11:21:58.283294] Sleep for next iteration
+[2023-08-12 11:21:58.284448] Now working with group 132524310
+[2023-08-12 11:21:58.889084] Got the wall type
+[2023-08-12 11:22:04.143969] Should I post here?
+[2023-08-12 11:22:04.144224] Definitly yes
+[2023-08-12 11:22:05.296329] Posted and saved time
+[2023-08-12 11:22:05.876423] Sleep for next iteration
+[2023-08-12 11:22:05.876948] Now working with group 3276684
+[2023-08-12 11:22:06.434199] Got the wall type
+[2023-08-12 11:22:06.434334] Choosed time to post
+[2023-08-12 11:22:10.532528] Can't find my post! Posting right now...
+[2023-08-12 11:22:12.246779] Sleep for next iteration
+[2023-08-12 11:22:12.247590] Now working with group 208560939
+[2023-08-12 11:22:12.834093] Got the wall type
+[2023-08-12 11:22:12.834451] Choosed time to post
+[2023-08-12 11:22:15.803702] Found a post, but I need another one
+[2023-08-12 11:22:17.533555] Sleep for next iteration
+[2023-08-12 11:22:17.534265] Now working with group 89144568
+[2023-08-12 11:22:18.115776] Got the wall type
+[2023-08-12 11:22:18.115909] Choosed time to post
+[2023-08-12 11:22:22.511499] Can't find my post! Posting right now...
+[2023-08-12 11:22:24.273711] Sleep for next iteration
+[2023-08-12 11:22:24.277044] Now working with group 165091378
+[2023-08-12 11:22:24.879113] Got the wall type
+[2023-08-12 11:22:24.879324] Choosed time to post
+[2023-08-12 11:22:29.197733] Can't find my post! Posting right now...
+[2023-08-12 11:22:30.899763] Sleep for next iteration
+[2023-08-12 11:22:30.903785] Now working with group 166348007
+[2023-08-12 11:22:31.490559] Got the wall type
+[2023-08-12 11:22:31.490701] Choosed time to post
+[2023-08-12 11:22:36.211164] Can't find my post! Posting right now...
+[2023-08-12 11:22:37.909725] Sleep for next iteration
+[2023-08-12 11:22:37.910763] Now working with group 16394301
+[2023-08-12 11:22:38.491074] Got the wall type
+[2023-08-12 11:22:38.491366] Choosed time to post
+[2023-08-12 11:22:42.632140] Can't find my post! Posting right now...
+[2023-08-12 11:22:44.374362] Sleep for next iteration
+[2023-08-12 11:22:44.387572] Now working with group 166158927
+[2023-08-12 11:22:44.916627] Got the wall type
+[2023-08-12 11:22:44.916851] Choosed time to post
+[2023-08-12 11:22:49.214217] Can't find my post! Posting right now...
+[2023-08-12 11:22:50.941691] Sleep for next iteration
+[2023-08-12 11:22:50.942418] Now working with group 136874126
+[2023-08-12 11:22:51.491195] Got the wall type
+[2023-08-12 11:22:54.585731] Should I post here?
+[2023-08-12 11:22:54.585829] Definitly yes
+[2023-08-12 11:22:55.763682] Posted and saved time
+[2023-08-12 11:22:56.390948] Sleep for next iteration
+[2023-08-12 11:22:56.395800] Now working with group 133618256
+[2023-08-12 11:22:56.936240] Got the wall type
+[2023-08-12 11:22:56.936667] Choosed time to post
+[2023-08-12 11:23:01.029698] Can't find my post! Posting right now...
+[2023-08-12 11:23:02.820681] Sleep for next iteration
+[2023-08-12 11:23:02.822954] Now working with group 135790442
+[2023-08-12 11:23:03.387121] Got the wall type
+[2023-08-12 11:23:03.387417] Choosed time to post
+[2023-08-12 11:23:07.567053] Can't find my post! Posting right now...
+[2023-08-12 11:23:09.384932] Sleep for next iteration
+[2023-08-12 11:23:09.388175] Now working with group 152305172
+[2023-08-12 11:23:09.923017] Got the wall type
+[2023-08-12 11:23:09.923153] Choosed time to post
+[2023-08-12 11:23:14.345595] Can't find my post! Posting right now...
+[2023-08-12 11:23:16.175896] Sleep for next iteration
+[2023-08-12 11:23:16.176443] Now working with group 183960265
+[2023-08-12 11:23:16.777542] Got the wall type
+[2023-08-12 11:23:16.777838] Choosed time to post
+[2023-08-12 11:23:21.290326] Found a post, but I need another one
+[2023-08-12 11:23:23.054175] Sleep for next iteration
+[2023-08-12 11:23:23.055672] Now working with group 188293608
+[2023-08-12 11:23:23.591178] Got the wall type
+[2023-08-12 11:23:23.591317] Choosed time to post
+[2023-08-12 11:23:28.000451] Can't find my post! Posting right now...
+[2023-08-12 11:23:29.709031] Sleep for next iteration
+[2023-08-12 11:23:29.710132] Now working with group 133123979
+[2023-08-12 11:23:30.281406] Got the wall type
+[2023-08-12 11:23:30.281621] Choosed time to post
+[2023-08-12 11:23:34.216767] Can't find my post! Posting right now...
+[2023-08-12 11:23:35.949723] Sleep for next iteration
+[2023-08-12 11:23:35.951762] Now working with group 196918113
+[2023-08-12 11:23:36.502960] Got the wall type
+[2023-08-12 11:23:36.503471] Choosed time to post
+[2023-08-12 11:23:40.634688] Can't find my post! Posting right now...
+[2023-08-12 11:23:42.334708] Sleep for next iteration
+[2023-08-12 11:23:42.335234] Now working with group 195220896
+[2023-08-12 11:23:42.863935] Got the wall type
+[2023-08-12 11:23:42.864546] Choosed time to post
+[2023-08-12 11:23:46.728485] Can't find my post! Posting right now...
+[2023-08-12 11:23:48.455553] Sleep for next iteration
+[2023-08-12 11:23:48.456492] Now working with group 198600131
+[2023-08-12 11:23:48.997589] Got the wall type
+[2023-08-12 11:23:48.997726] Choosed time to post
+[2023-08-12 11:23:52.922756] Can't find my post! Posting right now...
+[2023-08-12 11:23:54.644004] Sleep for next iteration
+[2023-08-12 11:23:54.644509] Now working with group 184321342
+[2023-08-12 11:23:55.203947] Got the wall type
+[2023-08-12 11:23:55.204075] Choosed time to post
+[2023-08-12 11:23:59.165519] Can't find my post! Posting right now...
+[2023-08-12 11:24:00.834258] Sleep for next iteration
+[2023-08-12 11:24:00.834664] Now working with group 29345723
+[2023-08-12 11:24:01.363834] Got the wall type
+[2023-08-12 11:24:01.363999] Choosed time to post
+[2023-08-12 11:24:05.714002] Can't find my post! Posting right now...
+[2023-08-12 11:24:07.679423] Sleep for next iteration
+[2023-08-12 11:24:07.680252] Now working with group 162468538
+[2023-08-12 11:24:08.256972] Got the wall type
+[2023-08-12 11:24:08.257132] Choosed time to post
+[2023-08-12 11:24:12.180343] Can't find my post! Posting right now...
+[2023-08-12 11:24:13.889071] Sleep for next iteration
+[2023-08-12 11:24:13.889820] Now working with group 91726805
+[2023-08-12 11:24:14.473408] Got the wall type
+[2023-08-12 11:24:19.481159] Should I post here?
+[2023-08-12 11:24:19.481327] Definitly yes
+[2023-08-12 11:24:20.679599] Posted and saved time
+[2023-08-12 11:24:21.271425] Sleep for next iteration
+[2023-08-12 11:24:21.272025] Now working with group 160143161
+[2023-08-12 11:24:21.874438] Got the wall type
+[2023-08-12 11:24:21.874561] Choosed time to post
+[2023-08-12 11:24:24.126797] Found a post, but I need another one
+[2023-08-12 11:24:25.818470] Sleep for next iteration
+[2023-08-12 11:24:25.818908] Now working with group 203326442
+[2023-08-12 11:24:26.368628] Got the wall type
+[2023-08-12 11:24:26.368785] Choosed time to post
+[2023-08-12 11:24:28.294157] Found a post, but I need another one
+[2023-08-12 11:24:30.026978] Sleep for next iteration
+[2023-08-12 11:24:30.027565] Now working with group 210880065
+[2023-08-12 11:24:30.564946] Got the wall type
+[2023-08-12 11:24:30.565078] Choosed time to post
+[2023-08-12 11:24:33.032809] Found a post, but I need another one
+[2023-08-12 11:24:34.739110] Sleep for next iteration
+[2023-08-12 11:24:34.739773] Now working with group 34287861
+[2023-08-12 11:24:35.277969] Got the wall type
+[2023-08-12 11:24:35.278127] Choosed time to post
+[2023-08-12 11:24:37.490780] Found a post, but I need another one
+[2023-08-12 11:24:39.312079] Sleep for next iteration
+[2023-08-12 11:24:39.312723] Now working with group 171371038
+[2023-08-12 11:24:39.839602] Got the wall type
+[2023-08-12 11:24:39.839941] Choosed time to post
+[2023-08-12 11:24:44.179441] Can't find my post! Posting right now...
+[2023-08-12 11:24:45.867268] Sleep for next iteration
+[2023-08-12 11:24:45.867821] Now working with group 132686430
+[2023-08-12 11:24:46.398256] Got the wall type
+[2023-08-12 11:24:46.398369] Choosed time to post
+[2023-08-12 11:24:48.407143] Found a post, but I need another one
+[2023-08-12 11:24:50.199406] Sleep for next iteration
+[2023-08-12 11:24:50.200248] Now working with group 76739486
+[2023-08-12 11:24:50.757503] Got the wall type
+[2023-08-12 11:24:50.757635] Choosed time to post
+[2023-08-12 11:24:53.101118] Found a post, but I need another one
+[2023-08-12 11:24:54.781186] Sleep for next iteration
+[2023-08-12 11:24:54.781867] Now working with group 191486802
+[2023-08-12 11:24:55.371346] Got the wall type
+[2023-08-12 11:24:55.371482] Choosed time to post
+[2023-08-12 11:24:57.561672] Found a post, but I need another one
+[2023-08-12 11:24:59.256670] Sleep for next iteration
+[2023-08-12 11:24:59.257346] Now working with group 74360800
+[2023-08-12 11:24:59.786400] Got the wall type
+[2023-08-12 11:24:59.786555] Choosed time to post
+[2023-08-12 11:25:02.050859] Found a post, but I need another one
+[2023-08-12 11:25:03.757148] Sleep for next iteration
+[2023-08-12 11:25:03.757926] Now working with group 74777632
+[2023-08-12 11:25:04.286487] Got the wall type
+[2023-08-12 11:25:04.286679] Choosed time to post
+[2023-08-12 11:25:06.015239] Found a post, but I need another one
+[2023-08-12 11:25:07.730468] Sleep for next iteration
+[2023-08-12 11:25:07.730908] Now working with group 164421896
+[2023-08-12 11:25:08.271887] Got the wall type
+[2023-08-12 11:25:13.337734] Should I post here?
+[2023-08-12 11:25:13.337870] Definitly yes
+[2023-08-12 11:25:14.559970] Posted and saved time
+[2023-08-12 11:25:15.081073] Sleep for next iteration
+[2023-08-12 11:25:15.081684] Now working with group 116406985
+[2023-08-12 11:25:15.668433] Got the wall type
+[2023-08-12 11:25:15.668584] Choosed time to post
+[2023-08-12 11:25:17.699064] Found a post, but I need another one
+[2023-08-12 11:25:19.389858] Sleep for next iteration
+[2023-08-12 11:25:19.390433] Now working with group 111433045
+[2023-08-12 11:25:19.927947] Got the wall type
+[2023-08-12 11:25:23.428931] Should I post here?
+[2023-08-12 11:25:23.429006] Definitly yes
+[2023-08-12 11:25:24.561635] Posted and saved time
+[2023-08-12 11:25:25.103208] Sleep for next iteration
+[2023-08-12 11:25:25.104027] Now working with group 166116107
+[2023-08-12 11:25:25.673315] Got the wall type
+[2023-08-12 11:25:25.673453] Choosed time to post
+[2023-08-12 11:25:27.531711] Found a post, but I need another one
+[2023-08-12 11:25:29.228743] Sleep for next iteration
+[2023-08-12 11:25:29.229336] Now working with group 196521342
+[2023-08-12 11:25:29.787696] Got the wall type
+[2023-08-12 11:25:29.787822] Choosed time to post
+[2023-08-12 11:25:31.588589] Found a post, but I need another one
+[2023-08-12 11:25:33.327904] Sleep for next iteration
+[2023-08-12 11:25:33.328379] Now working with group 25771
+[2023-08-12 11:25:33.868017] Got the wall type
+[2023-08-12 11:25:33.868156] Choosed time to post
+[2023-08-12 11:25:35.804243] Found a post, but I need another one
+[2023-08-12 11:25:37.512187] Sleep for next iteration
+[2023-08-12 11:25:37.512572] Now working with group 92937904
+[2023-08-12 11:25:38.058283] Got the wall type
+[2023-08-12 11:25:38.058984] Choosed time to post
+[2023-08-12 11:25:39.911569] Found a post, but I need another one
+[2023-08-12 11:25:41.639227] Sleep for next iteration
+[2023-08-12 11:25:41.639628] Now working with group 86348865
+[2023-08-12 11:25:42.169012] Got the wall type
+[2023-08-12 11:25:42.169174] Choosed time to post
+[2023-08-12 11:25:44.265583] Found a post, but I need another one
+[2023-08-12 11:25:45.989590] Sleep for next iteration
+[2023-08-12 11:25:45.990269] Now working with group 86448982
+[2023-08-12 11:25:46.514925] Got the wall type
+[2023-08-12 11:25:46.515054] Choosed time to post
+[2023-08-12 11:25:48.689232] Found a post, but I need another one
+[2023-08-12 11:25:50.453777] Sleep for next iteration
+[2023-08-12 11:25:50.454497] Now working with group 157863442
+[2023-08-12 11:25:50.982084] Got the wall type
+[2023-08-12 11:25:50.982254] Choosed time to post
+[2023-08-12 11:25:53.467398] Found a post, but I need another one
+[2023-08-12 11:25:55.150323] Sleep for next iteration
+[2023-08-12 11:25:55.151006] Now working with group 63940497
+[2023-08-12 11:25:55.690372] Got the wall type
+[2023-08-12 11:25:55.690491] Choosed time to post
+[2023-08-12 11:25:57.779914] Found a post, but I need another one
+[2023-08-12 11:25:59.524291] Sleep for next iteration
+[2023-08-12 11:25:59.524695] Now working with group 16507590
+[2023-08-12 11:26:00.055351] Got the wall type
+[2023-08-12 11:26:00.055596] Choosed time to post
+[2023-08-12 11:26:01.603035] Found a post, but I need another one
+[2023-08-12 11:26:03.302327] Sleep for next iteration
+[2023-08-12 11:26:03.302811] Now working with group 203788484
+[2023-08-12 11:26:03.860257] Got the wall type
+[2023-08-12 11:26:03.860404] Choosed time to post
+[2023-08-12 11:26:05.598784] Found a post, but I need another one
+[2023-08-12 11:26:07.391484] Sleep for next iteration
+[2023-08-12 11:26:07.392097] Now working with group 108328422
+[2023-08-12 11:26:07.916584] Got the wall type
+[2023-08-12 11:26:07.916711] Choosed time to post
+[2023-08-12 11:26:09.771444] Found a post, but I need another one
+[2023-08-12 11:26:11.485908] Sleep for next iteration
+[2023-08-12 11:26:11.486434] Now working with group 55737278
+[2023-08-12 11:26:12.016609] Got the wall type
+[2023-08-12 11:26:12.016733] Choosed time to post
+[2023-08-12 11:26:14.103503] Found a post, but I need another one
