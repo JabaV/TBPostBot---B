@@ -7,7 +7,7 @@ from modules import module_logger
 import pickle
 import os
 
-#keep_alive()
+keep_alive()
 skip = 0
 token = os.environ['token']
 
@@ -190,7 +190,7 @@ while True:
                         continue
                 vk.account.setOffline()
                 module_logger.Log("Sleep for next iteration")
-                sleep(randint(30, 468))
+                # sleep(randint(30, 468))
     except Exception as e:
         module_logger.eLog(str(target_group) + ' ' + str(e))
         sleep(60)
