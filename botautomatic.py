@@ -1,4 +1,5 @@
 import vk_api
+import random
 from datetime import datetime, timedelta
 from time import sleep
 from random import randint
@@ -49,6 +50,8 @@ def parse(_string: str):
 
 def prepare(_text: str):
     _time_dict = None
+    if _text == '-':
+        _text = 'files/text' + str(random.randint(1, 5)) + '.txt'
     with open(_text, 'r', encoding='utf-8') as f:
         # читает рекламный текст для конкретной группы
         _text = f.read()
