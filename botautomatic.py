@@ -23,6 +23,8 @@ bot_id = vk.users.get()[0]['id']
 
 time_dict = {}
 
+tgtg = 0
+
 # функция для постинга
 def post(_target_group: int, _text: str, _image: int):
     vk.wall.post(owner_id=-_target_group,
@@ -143,11 +145,17 @@ def choose_time(_timer):
 while True:
     try:
         with open('files/groups.txt', 'r', encoding='utf-8') as file:
+            module_logger.eLog('STARTING FULL CYCLE')
+            time = open('files/time.txt', 'w+', encoding='utf-8')
+            time.write(str(datetime.now()))
+            time.flush()
+            time.close()
             while string := file.readline():
                 if skip == 1:
                     skip = 0
                     continue
                 target_group, text, image, timer = parse(string)
+                tgtg = target_group
                 text, time_dict = prepare(text)
                 module_logger.Log(f"Now working with group {target_group}")
 
@@ -193,8 +201,12 @@ while True:
                         continue
                 vk.account.setOffline()
                 module_logger.Log("Sleep for next iteration")
-                sleep(randint(30, 468))
+                #sleep(randint(30, 468))
+            sleep(3)
+            time = open('files/time.txt', 'r', encoding='utf-8')
+            resultTime = datetime.fromtimestamp(time.read()) - datetime.now() 
+            module_logger.eLog('FULL ITERATION PAST WITH TIME')
     except Exception as e:
-        module_logger.eLog(str(target_group) + ' ' + str(e))
+        module_logger.eLog(str(tgtg) + ' ' + str(e))
         sleep(60)
         skip = 1

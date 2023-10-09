@@ -1,16 +1,8 @@
-[2023-09-13 13:07:45.592899] Post in group 204799482 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:07:53.323537] Post in group 24734765 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:08:00.879276] Post in group 207600117 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:08:08.316943] Post in group 54959062 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:08:13.625547] Post in group 217329267 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:08:22.710368] Post in group 25497833 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:08:30.645216] Post in group 217331079 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:08:38.872232] Post in group 146098528 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:08:47.246531] Post in group 156716828 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:08:55.867376] Post in group 51153697 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:09:04.910301] Post in group 159284476 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:09:13.508068] Post in group 40905595 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:09:21.367828] Post in group 69874754 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:09:29.676951] Post in group 56899913 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:09:37.627576] Post in group 30365191 timed for too many days. Strange. Posting again to remind of myself
-[2023-09-13 13:11:56.949036] Post in group 91726805 timed for too many days. Strange. Posting again to remind of myself
+[2023-10-09 11:30:42.720283] STARTING FULL CYCLE
+[2023-10-09 11:33:38.027936] Post in group 159284476 timed for too many days. Strange. Posting again to remind of myself
+[2023-10-09 11:33:46.682410] Post in group 40905595 timed for too many days. Strange. Posting again to remind of myself
+[2023-10-09 11:33:54.376651] Post in group 69874754 timed for too many days. Strange. Posting again to remind of myself
+[2023-10-09 11:34:02.134048] Post in group 56899913 timed for too many days. Strange. Posting again to remind of myself
+[2023-10-09 11:34:09.951082] Post in group 30365191 timed for too many days. Strange. Posting again to remind of myself
+[2023-10-09 11:34:55.547624] 166158927 [214] Access to adding post denied: access to the wall is closed
+[2023-10-09 11:35:55.605516] STARTING FULL CYCLE
