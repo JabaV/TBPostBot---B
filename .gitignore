@@ -1,0 +1,15 @@
+log.txt
+/models
+/services
+/core
+/config
+/utils
+.venv
+__pycache__
+bot.log
+/venv
+/.idea
+/__pycache__
+.env
+.replit
+time.txt
