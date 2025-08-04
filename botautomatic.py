@@ -8,14 +8,21 @@ from time import sleep
 from typing import List, Optional, Tuple
 
 import vk_api
+from dotenv import load_dotenv  # type: ignore
 
 from modules import module_logger
 
+# загрузка переменных окружения из .env
+load_dotenv()
+
 skip = 0
-token = os.environ["token"]
+# поддерживаем оба варианта имени, но приоритет у верхнего регистра
+token = os.environ.get("TOKEN") or os.environ.get("token")
+if not token:
+    raise RuntimeError("VK API token is missing. Define TOKEN in .env or environment.")
 
 # дефолтная пауза между постами, если не указана в groups.txt
-wait_time = 60 * 60 * 12
+wait_time = int(os.environ.get("DEFAULT_WAIT_TIME", str(60 * 60 * 12)))
 
 vk_session = vk_api.VkApi(token=token)
 vk = vk_session.get_api()
