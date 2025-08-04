@@ -7,8 +7,8 @@
 ### Added
 - Package marker modules/init.py to solidify package imports and avoid duplicate module resolution under mypy.
 - Docstrings for tests to satisfy pydocstyle:
-- tests/test_core.py — D103 for all public test functions.
-- tests/test_vk_integration.py — D107 for init, D106 for nested classes, D102 for methods.
+    - tests/test_core.py — D103 for all public test functions.
+    - tests/test_vk_integration.py — D107 for init, D106 for nested classes, D102 for methods.
 - CI/test infra improvements:
     - pytest.ini — add --import-mode=importlib and pythonpath=. for reliable imports.
 ### Changed
