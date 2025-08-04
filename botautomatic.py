@@ -128,7 +128,7 @@ def load_variants_file(path: str) -> List[Tuple[str, str]]:
     return variants
 
 
-def pick_variant(variants: List[Tuple[str, str]], desired: Optional[str]) -> str:
+def pick_variant(variants: List[Tuple[str, str]], desired: Optional[str]) -> Tuple[str, Optional[str]]:
     """Выбрать нужный или случайный вариант из загруженного списка.
 
     Args:
@@ -136,22 +136,24 @@ def pick_variant(variants: List[Tuple[str, str]], desired: Optional[str]) -> str
         desired (str | None): Идентификатор варианта или '-' для случайного, None — случайный.
 
     Returns:
-        str: Выбранный текст варианта или пустая строка при отсутствии вариантов.
+        tuple[str, str|None]: (текст выбранного варианта, id выбранного варианта или None если вариантов нет)
 
     Examples:
-        >>> pick_variant([("1", "A"), ("2", "B")], "2") == "B"
+        >>> pick_variant([("1", "A"), ("2", "B")], "2")[0] == "B"
         True
-        >>> pick_variant([("1", "A")], "-") in ("A",)
+        >>> pick_variant([("1", "A")], "-")[0] in ("A",)
         True
     """
     if not variants:
-        return ""
+        return "", None
     if desired is None or desired == "-":
-        return random.choice(variants)[1]
+        vid, body = random.choice(variants)
+        return body, vid
     for vid, body in variants:
         if vid == desired:
-            return body
-    return random.choice(variants)[1]
+            return body, vid
+    vid, body = random.choice(variants)
+    return body, vid
 
 
 def build_text(
@@ -162,7 +164,7 @@ def build_text(
     b4_var: Optional[str],
     b5_var: Optional[str],
     links_var: Optional[str],
-) -> str:
+) -> Tuple[str, dict]:
     """Собрать итоговый текст поста из набора блоков.
 
     Источники:
@@ -180,7 +182,7 @@ def build_text(
         links_var (str | None): Вариант для ссылки.
 
     Returns:
-        str: Собранный текст поста.
+        tuple[str, dict]: (Собранный текст поста, карта выбранных вариантов по блокам {'tags': 'id', 'b1': 'id', ...})
 
     Examples:
         >>> # build_text("-", "-", "-", "-", "-", "-", "-")  # doctest: +SKIP
@@ -194,27 +196,38 @@ def build_text(
     links = load_variants_file("files/links.txt")
 
     parts = []
-    tv = pick_variant(tags, tags_var)
+    chosen_ids: dict = {}
+    tv, tv_id = pick_variant(tags, tags_var)
     if tv:
         parts.append(tv)
-    for v, vv in [
-        (b1, b1_var),
-        (b2, b2_var),
-        (b3, b3_var),
-        (b4, b4_var),
-        (b5, b5_var),
+    if tv_id is not None:
+        chosen_ids["tags"] = tv_id
+
+    for name, v, vv in [
+        ("b1", b1, b1_var),
+        ("b2", b2, b2_var),
+        ("b3", b3, b3_var),
+        ("b4", b4, b4_var),
+        ("b5", b5, b5_var),
     ]:
-        pv = pick_variant(v, vv)
+        pv, pv_id = pick_variant(v, vv)
         if pv:
             parts.append(pv)
-    lv = pick_variant(links, links_var)
+        if pv_id is not None:
+            chosen_ids[name] = pv_id
+
+    lv, lv_id = pick_variant(links, links_var)
     if lv:
         parts.append(lv)
+    if lv_id is not None:
+        chosen_ids["links"] = lv_id
+
     # Соединяем блоки пустой строкой между ними
-    return "\n\n".join(p.strip() for p in parts if p.strip())
+    built = "\n\n".join(p.strip() for p in parts if p.strip())
+    return built, chosen_ids
 
 
-def parse(_string: str) -> Tuple[int, str, int, Optional[int]]:
+def parse(_string: str) -> Tuple[int, str, int, Optional[int], dict]:
     """Распарсить строку groups.txt (новый и старый форматы).
 
     Новый формат:
@@ -240,6 +253,7 @@ def parse(_string: str) -> Tuple[int, str, int, Optional[int]]:
         True
     """
     s = _string.strip()
+    template_meta: dict = {"raw": _string.rstrip("\n")}
     if not s:
         raise ValueError("Empty line")
 
@@ -254,15 +268,20 @@ def parse(_string: str) -> Tuple[int, str, int, Optional[int]]:
             delay_spec = None
             if after.startswith("|"):
                 delay_spec = after[1:].strip()
+            template_meta["delay_spec"] = delay_spec
             # Разбить варианты
             segs = blocks_part.split(":")
             if len(segs) != 8:
                 raise ValueError("New format requires 8 segments in [ ... ]")
             tags_var, b1v, b2v, b3v, b4v, b5v, links_var, image_id_str = segs
             image_id = int(image_id_str)
+            template_meta["segments"] = {
+                "tags": tags_var, "b1": b1v, "b2": b2v, "b3": b3v, "b4": b4v, "b5": b5v, "links": links_var
+            }
+            template_meta["image_id"] = image_id
             delay_seconds = parse_duration(delay_spec) if delay_spec else wait_time
             # Строим текст
-            text_built = build_text(
+            text_built, chosen_ids = build_text(
                 tags_var or None,
                 b1v or None,
                 b2v or None,
@@ -271,7 +290,18 @@ def parse(_string: str) -> Tuple[int, str, int, Optional[int]]:
                 b5v or None,
                 links_var or None,
             )
-            return group_id, text_built, image_id, delay_seconds
+            # Если какие-то блоки были случайными ('-' или None), заменим их на фактически выбранные ID
+            effective_segments = dict(template_meta.get("segments", {}))
+            for key, chosen_id in chosen_ids.items():
+                # если в шаблоне был '-' или пусто, логируем фактически выбранный id
+                if effective_segments.get(key) in (None, "", "-"):
+                    effective_segments[key] = chosen_id
+            template_meta["effective_segments"] = effective_segments
+
+            # В превью лог пишем первые 300 символов без переводов строк
+            preview = " ".join(text_built.splitlines())
+            template_meta["built_preview"] = (preview[:300] + ("..." if len(preview) > 300 else ""))
+            return group_id, text_built, image_id, delay_seconds, template_meta
         except Exception as e:
             module_logger.eLog(f"Failed to parse new format line: '{s}'. Error: {e}")
             raise
@@ -292,7 +322,12 @@ def parse(_string: str) -> Tuple[int, str, int, Optional[int]]:
                 _timer = None
         _group_int: int = int(_group)
         _image_int: int = int(_image.replace("\n", ""))
-        return _group_int, _text, _image_int, _timer
+        template_meta["segments"] = {"legacy_path_or_dash": _text}
+        template_meta["image_id"] = _image_int
+        template_meta["delay_spec"] = str(_timer) if _timer is not None else None
+        # built_preview будет сформирован после чтения файла в prepare(), поэтому здесь пусто
+        template_meta["built_preview"] = ""
+        return _group_int, _text, _image_int, _timer, template_meta
 
 
 from typing import Any, Dict
@@ -522,9 +557,20 @@ if __name__ == "__main__":
                     if skip == 1:
                         skip = 0
                         continue
-                    target_group, text_or_path_built, image, timer = parse(string)
+                    target_group, text_or_path_built, image, timer, template_meta = parse(string)
                     tgtg = target_group
                     text, time_dict = prepare(text_or_path_built)
+                    # Дополняем превью для старого формата после чтения из файла
+                    if template_meta.get("built_preview") == "":
+                        preview = " ".join(text.splitlines())
+                        template_meta["built_preview"] = (preview[:300] + ("..." if len(preview) > 300 else ""))
+                    # Логируем использованный шаблон
+                    module_logger.Log(
+                        f"Template for group {target_group}: "
+                        f"effective_segments={template_meta.get('effective_segments', template_meta.get('segments'))}, "
+                        f"delay={template_meta.get('delay_spec')}, "
+                        f"image_id={template_meta.get('image_id')}"
+                    )
                     module_logger.Log(f"Now working with group {target_group}")
 
                     group = vk.groups.getById(group_id=target_group, fields="wall")
