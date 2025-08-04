@@ -1,0 +1,31 @@
+site_name: TBPostBot Docs
+site_description: Документация TBPostBot — автоматический постинг в VK
+site_url: ""
+repo_url: ""
+repo_name: TBPostBot
+theme:
+  name: material
+  language: ru
+  features:
+    - navigation.top
+    - navigation.instant
+    - content.code.copy
+    - content.action.edit
+nav:
+  - Введение: index.md
+  - Архитектура: architecture.md
+  - Конфигурация: configuration.md
+  - Форматы данных: formats.md
+  - Руководство по запуску: usage.md
+  - API (модули/функции): api.md
+  - Отладка и логирование: debugging.md
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - tables
+  - fenced_code
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: ""

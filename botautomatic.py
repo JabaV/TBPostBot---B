@@ -28,28 +28,57 @@ vk_session = vk_api.VkApi(token=token)
 vk = vk_session.get_api()
 bot_id = vk.users.get()[0]["id"]
 
-time_dict = {}
-tgtg = 0
+time_dict: dict = {}
+tgtg: int = 0
 
 
-# функция для постинга
-def post(_target_group: int, _text: str, _image: int):
+def post(_target_group: int, _text: str, _image: int) -> None:
+    """Опубликовать пост в заданной группе VK.
+
+    Args:
+        _target_group (int): Идентификатор сообщества (без знака).
+        _text (str): Текст поста.
+        _image (int): Идентификатор фото (часть attachments вида photo{bot_id}_{_image}).
+
+    Returns:
+        None
+
+    Raises:
+        vk_api.ApiError: Ошибки VK API при публикации.
+
+    Examples:
+        >>> # post(156716828, "Пример поста", 457239113)  # doctest: +SKIP
+    """
     vk.wall.post(
         owner_id=-_target_group, message=_text, attachments=f"photo{bot_id}_{_image}"
     )
 
 
-# --- NEW: Duration parser like "1d2h3m4s" (parts optional) ---
 def parse_duration(spec: str) -> int:
-    """
-    Преобразует строку длительности (например, '3d2h1m5s' или '2h' или '45m') в секунды.
+    """Преобразовать строку длительности в секунды.
+
+    Поддерживаемый формат: '1d2h3m4s', части опциональны, порядок фиксирован (d→h→m→s).
+    При некорректном формате возвращается значение по умолчанию (wait_time) и логируется ошибка.
+
+    Args:
+        spec (str): Спецификация длительности. Может быть пустой строкой.
+
+    Returns:
+        int: Длительность в секундах.
+
+    Examples:
+        >>> parse_duration("1d2h3m4s") >= 1*86400 + 2*3600 + 3*60 + 4
+        True
+        >>> parse_duration("2h") == 7200
+        True
+        >>> parse_duration("") == wait_time
+        True
     """
     if not spec:
         return wait_time
     pattern = r"(?:(?P<d>\d+)d)?(?:(?P<h>\d+)h)?(?:(?P<m>\d+)m)?(?:(?P<s>\d+)s)?"
     m = re.fullmatch(pattern, spec.strip())
     if not m:
-        # если формат неизвестен — лог и возврат дефолта
         module_logger.eLog(f"Bad delay format '{spec}', using default wait_time")
         return wait_time
     days = int(m.group("d") or 0)
@@ -61,24 +90,34 @@ def parse_duration(spec: str) -> int:
 
 # --- NEW: TextBuilder helpers ---
 def load_variants_file(path: str) -> List[Tuple[str, str]]:
-    """
-    Загружает файл вариаций блоков/тегов/ссылок в формате:
-    ##1
-    text...
-    ##2
-    text...
-    Возвращает список пар (ид_варианта, текст).
-    Если встречаются заголовки вида '###name' — имя будет идентификатором.
+    """Загрузить варианты из файла блоков/тегов/ссылок.
+
+    Формат файла:
+      ##1
+      текст варианта 1
+      ##2
+      текст варианта 2
+      ###name
+      текст именованного варианта
+
+    Args:
+        path (str): Путь к файлу.
+
+    Returns:
+        list[tuple[str, str]]: Список пар (идентификатор, содержимое).
+
+    Notes:
+        Разделение выполняется по заголовкам строк вида '##' или '###' в начале строки.
+
+    Examples:
+        >>> # load_variants_file("files/block1.txt")  # doctest: +SKIP
     """
     variants: List[Tuple[str, str]] = []
     if not os.path.exists(path):
         return variants
     with open(path, "r", encoding="utf-8") as f:
         content = f.read()
-    # Разбиваем по линиям заголовков, допускаем ##<num> или ###<name>
     parts = re.split(r"^#{2,3}([^\r\n]+)\s*$", content, flags=re.MULTILINE)
-    # parts будет: [pre, id1, block1, id2, block2, ...]
-    # Игнорируем pre (до первого заголовка)
     for i in range(1, len(parts), 2):
         vid_raw = parts[i].strip()
         vid = vid_raw.lstrip("#").strip()
@@ -88,22 +127,28 @@ def load_variants_file(path: str) -> List[Tuple[str, str]]:
 
 
 def pick_variant(variants: List[Tuple[str, str]], desired: Optional[str]) -> str:
-    """
-    Возвращает текст варианта.
-    desired:
-      - None или '-' => случайный
-      - иначе ищем по id (совпадение идентификатора).
-    Если не найден желаемый — случайный, если список пуст — пустая строка.
+    """Выбрать нужный или случайный вариант из загруженного списка.
+
+    Args:
+        variants (list[tuple[str, str]]): Список пар (id, текст).
+        desired (str | None): Идентификатор варианта или '-' для случайного, None — случайный.
+
+    Returns:
+        str: Выбранный текст варианта или пустая строка при отсутствии вариантов.
+
+    Examples:
+        >>> pick_variant([("1", "A"), ("2", "B")], "2") == "B"
+        True
+        >>> pick_variant([("1", "A")], "-") in ("A",)
+        True
     """
     if not variants:
         return ""
     if desired is None or desired == "-":
         return random.choice(variants)[1]
-    # ищем по идентификатору (строгое совпадение)
     for vid, body in variants:
         if vid == desired:
             return body
-    # не нашли — случайный
     return random.choice(variants)[1]
 
 
@@ -116,12 +161,27 @@ def build_text(
     b5_var: Optional[str],
     links_var: Optional[str],
 ) -> str:
-    """
-    Собирает итоговый текст из файлов:
-      files/tags.txt
-      files/block1.txt .. files/block5.txt
-      files/links.txt
-    Каждый файл содержит варианты в формате ##id / ###name.
+    """Собрать итоговый текст поста из набора блоков.
+
+    Источники:
+      - files/tags.txt
+      - files/block1.txt .. files/block5.txt
+      - files/links.txt
+
+    Args:
+        tags_var (str | None): Вариант для тегов.
+        b1_var (str | None): Вариант для блока 1.
+        b2_var (str | None): Вариант для блока 2.
+        b3_var (str | None): Вариант для блока 3.
+        b4_var (str | None): Вариант для блока 4.
+        b5_var (str | None): Вариант для блока 5.
+        links_var (str | None): Вариант для ссылки.
+
+    Returns:
+        str: Собранный текст поста.
+
+    Examples:
+        >>> # build_text("-", "-", "-", "-", "-", "-", "-")  # doctest: +SKIP
     """
     tags = load_variants_file("files/tags.txt")
     b1 = load_variants_file("files/block1.txt")
@@ -152,17 +212,30 @@ def build_text(
     return "\n\n".join(p.strip() for p in parts if p.strip())
 
 
-# --- NEW: Новый парсер строки groups.txt c обратной совместимостью ---
 def parse(_string: str) -> Tuple[int, str, int, Optional[int]]:
-    """
-    Поддержка старого формата:
-      groupid:path|imageid[?seconds]
-      где path == '-' означает рандом files/text{1..5}.txt
-    И нового формата:
+    """Распарсить строку groups.txt (новый и старый форматы).
+
+    Новый формат:
       groupid:[tags:b1:b2:b3:b4:b5:links:image]|delay
-    где любой блок может быть '-' для рандома. delay в формате 1d2h3m4s.
-    Пример рандомизации только b3:
-      groupid:[-:-:-:b3var:-:-:linksvar:imageid]|3d2h
+    Старый формат:
+      groupid:path|image[?seconds]
+
+    Args:
+        _string (str): Строка конфигурации.
+
+    Returns:
+        tuple[int, str, int, int|None]: (group_id, текст_или_путь, image_id, задержка_сек|None)
+
+    Raises:
+        ValueError: Пустая строка.
+        Exception: Если не удалось распарсить новый формат (логируется).
+
+    Examples:
+        >>> parse("156716828:[-:-:-:2:-:-:-:457239113]|12h")[0] == 156716828
+        True
+        >>> gid, path, img, t = parse("156716828:files/TG.txt|457239113")
+        >>> gid == 156716828 and img == 457239113
+        True
     """
     s = _string.strip()
     if not s:
@@ -218,10 +291,24 @@ def parse(_string: str) -> Tuple[int, str, int, Optional[int]]:
 
 
 def prepare(_text_or_built: str) -> Tuple[str, Optional[dict]]:
-    """
-    Старый путь: если пришел путь или '-' — загрузить контент из файла.
-    Новый путь: если пришел уже собранный текст — вернуть как есть.
-    Улучшено: безопасная загрузка dumping.pkl и логирование ошибок чтения файлов.
+    """Подготовить текст к публикации и загрузить кэш времени.
+
+    Старый формат:
+      - Если пришёл путь к файлу или '-', загрузить текст из файла.
+    Новый формат:
+      - Если пришёл уже собранный текст (есть переносы строк или нет .txt), вернуть как есть.
+
+    Args:
+        _text_or_built (str): Путь к файлу, '-' или готовый текст.
+
+    Returns:
+        tuple[str, dict|None]: (текст_поста, словарь_времени|пустой словарь)
+
+    Notes:
+        Безопасно читает files/dumping.pkl; создаёт файл при отсутствии.
+
+    Examples:
+        >>> txt, td = prepare("files/text1.txt")  # doctest: +SKIP
     """
     _time_dict = {}
 
@@ -261,10 +348,19 @@ def prepare(_text_or_built: str) -> Tuple[str, Optional[dict]]:
 
 
 def get_last_post(_tg: int):
-    """
-    Возвращает последний пост, связанный с ботом, на стене группы _tg
-    или None, если не найден. Возвращает -1 при ошибке.
-    Улучшено логирование: логируем ключевые этапы и ошибки с контекстом.
+    """Получить последний пост, связанный с ботом, на стене группы.
+
+    Args:
+        _tg (int): Идентификатор группы.
+
+    Returns:
+        dict | None | int: Объект поста VK, None если не найден, или -1 при ошибке.
+
+    Notes:
+        Для стен типа 1 ищется from_id == bot_id, для 2/3 — signer_id == bot_id.
+
+    Examples:
+        >>> # get_last_post(156716828)  # doctest: +SKIP
     """
     last_post = None
     try:
@@ -302,9 +398,21 @@ def get_last_post(_tg: int):
 
 
 def check_suggests(_tg: int, time_s: int):
-    """
-    Решение о постинге для стен 2/3 с учётом предложки.
-    Улучшено логирование и обработка ошибок.
+    """Решить, нужно ли постить в стенах 2/3 с учётом предложки.
+
+    Args:
+        _tg (int): Идентификатор группы.
+        time_s (int): Порог времени в секундах.
+
+    Returns:
+        int: 1 — постить; 0 — не постить; -1 — ошибка (например, VK API error).
+
+    Notes:
+        Пустая предложка и превышение порога времени => постить.
+
+    Examples:
+        >>> # check_suggests(156716828, 43200) in (-1, 0, 1)  # doctest: +SKIP
+        True
     """
     try:
         suggested_posts = vk.wall.get(owner_id=-_tg, filter="suggests")
@@ -354,7 +462,21 @@ def check_suggests(_tg: int, time_s: int):
     return 0
 
 
-def choose_time(_timer):
+def choose_time(_timer: Optional[int]) -> int:
+    """Выбрать время ожидания до следующего поста.
+
+    Args:
+        _timer (int | None): Значение таймера или None.
+
+    Returns:
+        int: Число секунд ожидания.
+
+    Examples:
+        >>> choose_time(None) == wait_time
+        True
+        >>> choose_time(10) == 10
+        True
+    """
     if _timer is None:
         return wait_time
     else:
@@ -373,7 +495,7 @@ while True:
                 string = file.readline()
                 if not string:
                     break
-                # Пропускаем строки, начинающиеся с "# " (комментарии)
+                # Комментарии: пропускаем строки, начинающиеся с "# " (решётка и пробел)
                 if string.lstrip().startswith("# "):
                     continue
                 if skip == 1:

@@ -1,2 +1,7 @@
 vk-api
 dotenv
+pytest
+mypy
+pydocstyle
+mkdocs
+mkdocs-material
