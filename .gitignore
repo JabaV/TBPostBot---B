@@ -15,6 +15,6 @@ bot.log
 time.txt
 .mypy_cache
 .pytest_cache
-error_log.txt
+error_log
 /site
-dumping.pkl
+/files/dumping.pkl
