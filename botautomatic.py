@@ -1,11 +1,13 @@
-import vk_api
+import os
+import pickle
 import random
 from datetime import datetime, timedelta
-from time import sleep
 from random import randint
+from time import sleep
+
+import vk_api
+
 from modules import module_logger
-import pickle
-import os
 
 skip = 0
 token = os.environ["token"]
@@ -66,7 +68,6 @@ def prepare(_text: str):
 
 
 def get_last_post(_tg: int):
-    # noinspection PyShadowingNames
     last_post = None
     try:
         count = 2
