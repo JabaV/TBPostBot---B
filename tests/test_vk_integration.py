@@ -1,15 +1,27 @@
 import types
 from datetime import datetime, timedelta
 
-import pytest
-
 import botautomatic as ba
 
 
 class DummyVK:
-    """Простой двойник VK API для мока вызовов vk_api."""
+    """Lightweight VK API double used to mock vk_api interactions.
+
+    Provides minimal groups and wall sub-APIs required by the tests to
+    exercise posting and suggestion-checking logic without real network I/O.
+    """
 
     def __init__(self, wall_items=None, wall_suggests=None, group_wall_type=1):
+        """Initialize dummy API with predefined data sets.
+
+        Args:
+            wall_items: Sequence of wall posts returned by wall.get for feed.
+            wall_suggests: Sequence returned when filter="suggests".
+            group_wall_type: Wall type to emulate (1, 2, or 3).
+
+        Side effects:
+            Stores inputs on the instance; no external effects.
+        """
         # wall.get вернёт items как есть
         self._wall_items = wall_items or []
         self._wall_suggests = wall_suggests or []
@@ -17,26 +29,48 @@ class DummyVK:
 
     # Эмулируем подпакет groups
     class GroupsAPI:
+        """Nested stub for VK groups API.
+
+        Exposes getById to return wall type metadata like the real API shape.
+        """
+
         def __init__(self, wall_type):
+            """Save wall type to be returned from getById."""
             self._wall_type = wall_type
 
         def getById(self, group_id, fields):
+            """Return group info list matching VK API response shape."""
             # Возвращаем список как делает VK API
             return [{"id": group_id, "wall": self._wall_type}]
 
     # Эмулируем подпакет wall
     class WallAPI:
+        """Nested stub for VK wall API with basic get behavior."""
+
         def __init__(self, items, suggests):
+            """Store feeds for normal and suggests queries."""
             self._items = items
             self._suggests = suggests
 
         def get(self, owner_id, offset=0, count=100, filter=None):
+            """Return items or suggests based on filter argument.
+
+            Args:
+                owner_id: Wall owner id (ignored in stub).
+                offset: Offset for pagination (ignored in stub).
+                count: Requested items count (ignored in stub).
+                filter: When "suggests", return suggests dataset.
+
+            Returns:
+                Dict with "items" key mimicking VK API payload.
+            """
             if filter == "suggests":
                 return {"items": self._suggests}
             # имитируем пагинацию по 100, но для тестов достаточно вернуть  items как есть
             return {"items": self._items}
 
     def build_api(self):
+        """Assemble a SimpleNamespace shaped like vk_api session get_api()."""
         api = types.SimpleNamespace()
         api.groups = DummyVK.GroupsAPI(self._group_wall_type)
         api.wall = DummyVK.WallAPI(self._wall_items, self._wall_suggests)

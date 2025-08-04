@@ -7,8 +7,8 @@ from random import randint
 from time import sleep
 from typing import List, Optional, Tuple
 
-import vk_api
-from dotenv import load_dotenv  # type: ignore
+import vk_api  # type: ignore[import-untyped]
+from dotenv import load_dotenv
 
 from modules import module_logger
 
@@ -22,13 +22,15 @@ if not token:
     raise RuntimeError("VK API token is missing. Define TOKEN in .env or environment.")
 
 # дефолтная пауза между постами, если не указана в groups.txt
-wait_time = int(os.environ.get("DEFAULT_WAIT_TIME", str(60 * 60 * 12)))
+wait_time: int = int(os.environ.get("DEFAULT_WAIT_TIME", str(60 * 60 * 12)))
 
 vk_session = vk_api.VkApi(token=token)
 vk = vk_session.get_api()
 bot_id = vk.users.get()[0]["id"]
 
-time_dict: dict = {}
+from typing import Any, Dict
+
+time_dict: Dict[int, datetime] = {}
 tgtg: int = 0
 
 
@@ -283,14 +285,19 @@ def parse(_string: str) -> Tuple[int, str, int, Optional[int]]:
         )
         if "?" in s:
             _image = s[s.find("|") + 1 : s.find("?")]
-            _timer = s[s.find("?") + 1 :]
-            _timer = int(_timer)
-        _group = int(_group)
-        _image = int(_image.replace("\n", ""))
-        return _group, _text, _image, _timer
+            _timer_str = s[s.find("?") + 1 :]
+            try:
+                _timer = int(_timer_str)
+            except ValueError:
+                _timer = None
+        _group_int: int = int(_group)
+        _image_int: int = int(_image.replace("\n", ""))
+        return _group_int, _text, _image_int, _timer
 
 
-def prepare(_text_or_built: str) -> Tuple[str, Optional[dict]]:
+from typing import Any, Dict
+
+def prepare(_text_or_built: str) -> Tuple[str, Dict[Any, Any]]:
     """Подготовить текст к публикации и загрузить кэш времени.
 
     Старый формат:
@@ -310,7 +317,7 @@ def prepare(_text_or_built: str) -> Tuple[str, Optional[dict]]:
     Examples:
         >>> txt, td = prepare("files/text1.txt")  # doctest: +SKIP
     """
-    _time_dict = {}
+    _time_dict: Dict[Any, Any] = {}
 
     # Решаем, читать ли файл текста (старый формат)
     if _text_or_built != "-" and (
@@ -335,7 +342,11 @@ def prepare(_text_or_built: str) -> Tuple[str, Optional[dict]]:
             and os.path.getsize("files/dumping.pkl") > 0
         ):
             with open("files/dumping.pkl", "rb") as _p:
-                _time_dict = pickle.load(_p)
+                loaded = pickle.load(_p)
+                if isinstance(loaded, dict):
+                    _time_dict = loaded
+                else:
+                    _time_dict = {}
         else:
             # убедимся, что файл существует
             os.makedirs("files", exist_ok=True)
@@ -347,7 +358,12 @@ def prepare(_text_or_built: str) -> Tuple[str, Optional[dict]]:
     return _text, _time_dict
 
 
-def get_last_post(_tg: int):
+from typing import Any, Mapping, Union, cast
+
+VKPost = Mapping[str, Any]
+MaybePost = Union[VKPost, None, int]
+
+def get_last_post(_tg: int) -> MaybePost:
     """Получить последний пост, связанный с ботом, на стене группы.
 
     Args:
@@ -362,7 +378,7 @@ def get_last_post(_tg: int):
     Examples:
         >>> # get_last_post(156716828)  # doctest: +SKIP
     """
-    last_post = None
+    last_post: Optional[VKPost] = None
     try:
         count = 2
         while count:
@@ -391,13 +407,14 @@ def get_last_post(_tg: int):
             else:
                 module_logger.Log(f"Last bot-related post found in group {_tg}")
                 return last_post
-        return last_post
+        # Возвращаем None, если не найдено
+        return None
     except Exception as e:
         module_logger.eLog(f"get_last_post({_tg}) failed: {e}")
         return -1
 
 
-def check_suggests(_tg: int, time_s: int):
+def check_suggests(_tg: int, time_s: int) -> int:
     """Решить, нужно ли постить в стенах 2/3 с учётом предложки.
 
     Args:
@@ -432,8 +449,9 @@ def check_suggests(_tg: int, time_s: int):
                 return 0
         elif last_pst is not None:
             if last_pst != -1:
+                lp = cast(VKPost, last_pst)
                 if datetime.now() - datetime.fromtimestamp(
-                    last_pst["date"]
+                    lp["date"]
                 ) >= timedelta(seconds=time_s):
                     module_logger.Log(
                         f"Last post older than threshold in group {_tg} — ready to post"
@@ -483,84 +501,86 @@ def choose_time(_timer: Optional[int]) -> int:
         return _timer
 
 
-while True:
-    try:
-        with open("files/groups.txt", "r", encoding="utf-8") as file:
-            module_logger.eLog("STARTING FULL CYCLE")
-            timef = open("files/time.txt", "w+", encoding="utf-8")
-            timef.write(str(datetime.now()))
-            timef.flush()
-            timef.close()
-            while True:
-                string = file.readline()
-                if not string:
-                    break
-                # Комментарии: пропускаем строки, начинающиеся с "# " (решётка и пробел)
-                if string.lstrip().startswith("# "):
-                    continue
-                if skip == 1:
-                    skip = 0
-                    continue
-                target_group, text_or_path_built, image, timer = parse(string)
-                tgtg = target_group
-                text, time_dict = prepare(text_or_path_built)
-                module_logger.Log(f"Now working with group {target_group}")
-
-                group = vk.groups.getById(group_id=target_group, fields="wall")
-                wall_type = group[0]["wall"]
-                module_logger.Log("Got the wall type")
-
-                if wall_type == 2 or wall_type == 3:
-                    should_post = check_suggests(target_group, choose_time(timer))
-                    module_logger.Log(
-                        f"Should I post in group {target_group}? result={should_post}"
-                    )
-                    if should_post == 1:
-                        module_logger.Log("Decision: post now (suggest mode)")
-                        vk.account.setOnline()
-                        post(target_group, text, image)
-                        time_dict[target_group] = datetime.now()
-                        module_logger.Log("Posted and saved time")
-                        try:
-                            with open("files/dumping.pkl", "wb") as p:
-                                pickle.dump(time_dict, p)
-                        except Exception as e:
-                            module_logger.eLog(f"Failed to save dumping.pkl: {e}")
-                    if should_post == -1:
-                        module_logger.Log("Decision: do not post due to error state")
-                        vk.account.setOffline()
-                        sleep(randint(30, 468))
+if __name__ == "__main__":
+    # Запускаем основной цикл только при прямом запуске скрипта,
+    # чтобы при импорте в pytest не блокировать сбор тестов.
+    while True:
+        try:
+            with open("files/groups.txt", "r", encoding="utf-8") as file:
+                module_logger.eLog("STARTING FULL CYCLE")
+                timef = open("files/time.txt", "w+", encoding="utf-8")
+                timef.write(str(datetime.now()))
+                timef.flush()
+                timef.close()
+                while True:
+                    string = file.readline()
+                    if not string:
+                        break
+                    # Комментарии: пропускаем строки, начинающиеся с "# " (решётка и пробел)
+                    if string.lstrip().startswith("# "):
                         continue
-                elif wall_type == 1:
-                    temp_time = choose_time(timer)
-                    module_logger.Log(f"Choosed time to post: {temp_time}s")
-                    last_bot_post = get_last_post(target_group)
-                    if last_bot_post is None:
-                        module_logger.Log("Can't find my post! Posting right now...")
-                        vk.account.setOnline()
-                        post(target_group, text, image)
-                    elif last_bot_post != -1:
-                        module_logger.Log("Found a post, evaluating time threshold")
-                        post_time = last_bot_post["date"]
-                        if datetime.fromtimestamp(
-                            post_time
-                        ) <= datetime.now() - timedelta(seconds=temp_time):
-                            module_logger.Log("Threshold passed — posting")
+                    if skip == 1:
+                        skip = 0
+                        continue
+                    target_group, text_or_path_built, image, timer = parse(string)
+                    tgtg = target_group
+                    text, time_dict = prepare(text_or_path_built)
+                    module_logger.Log(f"Now working with group {target_group}")
+
+                    group = vk.groups.getById(group_id=target_group, fields="wall")
+                    wall_type = group[0]["wall"]
+                    module_logger.Log("Got the wall type")
+
+                    if wall_type == 2 or wall_type == 3:
+                        should_post = check_suggests(target_group, choose_time(timer))
+                        module_logger.Log(
+                            f"Should I post in group {target_group}? result={should_post}"
+                        )
+                        if should_post == 1:
+                            module_logger.Log("Decision: post now (suggest mode)")
                             vk.account.setOnline()
                             post(target_group, text, image)
-                    elif last_bot_post == -1:
-                        module_logger.Log(
-                            "My job here is done (error in get_last_post)"
-                        )
-                        vk.account.setOffline()
-                        sleep(randint(30, 468))
-                        continue
-                vk.account.setOffline()
-                module_logger.Log("Sleep for next iteration")
-            sleep(3)
-            # time.txt ранее записали текущий момент; resultTime был неиспользуем
-            module_logger.eLog("FULL ITERATION PAST")
-    except Exception as e:
-        module_logger.eLog(str(tgtg) + " " + str(e))
-        sleep(60)
-        skip = 1
+                            time_dict[target_group] = datetime.now()
+                            module_logger.Log("Posted and saved time")
+                            try:
+                                with open("files/dumping.pkl", "wb") as p:
+                                    pickle.dump(time_dict, p)
+                            except Exception as e:
+                                module_logger.eLog(f"Failed to save dumping.pkl: {e}")
+                        if should_post == -1:
+                            module_logger.Log("Decision: do not post due to error state")
+                            vk.account.setOffline()
+                            sleep(randint(30, 468))
+                            continue
+                    elif wall_type == 1:
+                        temp_time = choose_time(timer)
+                        module_logger.Log(f"Choosed time to post: {temp_time}s")
+                        last_bot_post = get_last_post(target_group)
+                        if last_bot_post is None:
+                            module_logger.Log("Can't find my post! Posting right now...")
+                            vk.account.setOnline()
+                            post(target_group, text, image)
+                        elif last_bot_post != -1:
+                            module_logger.Log("Found a post, evaluating time threshold")
+                            post_time = cast(VKPost, last_bot_post)["date"]
+                            if datetime.fromtimestamp(
+                                post_time
+                            ) <= datetime.now() - timedelta(seconds=temp_time):
+                                module_logger.Log("Threshold passed — posting")
+                                vk.account.setOnline()
+                                post(target_group, text, image)
+                        elif last_bot_post == -1:
+                            module_logger.Log(
+                                "My job here is done (error in get_last_post)"
+                            )
+                            vk.account.setOffline()
+                            sleep(randint(30, 468))
+                            continue
+                    vk.account.setOffline()
+                    module_logger.Log("Sleep for next iteration")
+                sleep(3)
+                module_logger.eLog("FULL ITERATION PAST")
+        except Exception as e:
+            module_logger.eLog(str(tgtg) + " " + str(e))
+            sleep(60)
+            skip = 1

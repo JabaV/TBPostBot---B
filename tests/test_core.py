@@ -1,13 +1,12 @@
-import os
-import builtins
-import types
-
-import pytest
-
 import botautomatic as ba
 
 
 def test_parse_duration_basic():
+    """Validate parse_duration for hours, composite spec, and default fallback.
+
+    Ensures "2h" equals 7200, "1d2h3m4s" sums to expected seconds, and an empty
+    string returns the configured default wait_time.
+    """
     assert ba.parse_duration("2h") == 7200
     assert ba.parse_duration("1d2h3m4s") == 1 * 86400 + 2 * 3600 + 3 * 60 + 4
     # пустая строка — дефолт
@@ -15,6 +14,11 @@ def test_parse_duration_basic():
 
 
 def test_parse_new_format_minimal_random(monkeypatch):
+    """Parse new-format line with random variants and fixed 12h delay.
+
+    Mocks build_text to a constant. Verifies group id, built text, image id,
+    and delay seconds.
+    """
     # Подмена сборки текста, чтобы не зависеть от файлов
     monkeypatch.setattr(ba, "build_text", lambda *args, **kwargs: "BUILT")
     gid, text, img, delay = ba.parse("156716828:[-:-:-:-:-:-:-:457239113]|12h")
@@ -25,6 +29,11 @@ def test_parse_new_format_minimal_random(monkeypatch):
 
 
 def test_parse_new_format_with_named_variant(monkeypatch):
+    """Parse new-format line using named and numeric block variants.
+
+    Ensures that named headers (###name) and numeric ids resolve and delay
+    "45m" converts to seconds.
+    """
     monkeypatch.setattr(ba, "build_text", lambda *args, **kwargs: "BUILT_NAMED")
     gid, text, img, delay = ba.parse("42:[###name:1:2:3:4:5:###link:123]|45m")
     assert gid == 42
@@ -34,6 +43,10 @@ def test_parse_new_format_with_named_variant(monkeypatch):
 
 
 def test_parse_old_format_no_seconds(tmp_path, monkeypatch):
+    """Parse legacy format without seconds; prepare loads text from a file.
+
+    Verifies that delay is None and that prepare reads content from the path.
+    """
     # Создадим временный файл с содержимым текста
     text_path = tmp_path / "x.txt"
     text_path.write_text("HELLO", encoding="utf-8")
@@ -48,6 +61,7 @@ def test_parse_old_format_no_seconds(tmp_path, monkeypatch):
 
 
 def test_parse_old_format_with_seconds(tmp_path):
+    """Parse legacy format with seconds and ensure prepare reads content."""
     text_path = tmp_path / "y.txt"
     text_path.write_text("TEXT", encoding="utf-8")
     s = f"77:{text_path.as_posix()}|111?3600"
@@ -61,6 +75,11 @@ def test_parse_old_format_with_seconds(tmp_path):
 
 
 def test_build_text_random_variants(monkeypatch):
+    """Build text when all blocks are requested as random ('-').
+
+    Mocks loaders to return small controlled sets; effective selection becomes
+    deterministic for blocks with a single option.
+    """
     # Заменим загрузчики, чтобы вернуть контролируемые варианты
     def fake_load(path):
         if path.endswith("tags.txt"):
@@ -78,14 +97,24 @@ def test_build_text_random_variants(monkeypatch):
         if path.endswith("links.txt"):
             return [("cta", "LINK")]
         return []
+
     monkeypatch.setattr(ba, "load_variants_file", fake_load)
 
     # Все '-' => случайный, но в нашем наборе фактически по одному элементу на блок => детерминированно
     txt = ba.build_text("-", "-", "-", "-", "-", "-", "-")
-    assert "#t" in txt and "B1" in txt and "B2-" in txt and "B3-1" in txt and "B4-x" in txt and "B5-final" in txt and "LINK" in txt
+    assert (
+        "#t" in txt
+        and "B1" in txt
+        and "B2-" in txt
+        and "B3-1" in txt
+        and "B4-x" in txt
+        and "B5-final" in txt
+        and "LINK" in txt
+    )
 
 
 def test_build_text_specific_variants(monkeypatch):
+    """Build text with explicitly selected variants across blocks and links."""
     def fake_load(path):
         if path.endswith("tags.txt"):
             return [("lite", "#lite"), ("bobi", "#bobi")]
@@ -102,13 +131,23 @@ def test_build_text_specific_variants(monkeypatch):
         if path.endswith("links.txt"):
             return [("1", "L1")]
         return []
+
     monkeypatch.setattr(ba, "load_variants_file", fake_load)
 
     txt = ba.build_text("lite", "2", "2", "###tajikistan", "1", "closing", "1")
-    assert "#lite" in txt and "B1-2" in txt and "B2-2" in txt and "TJ" in txt and "B4-1" in txt and "B5-C" in txt and "L1" in txt
+    assert (
+        "#lite" in txt
+        and "B1-2" in txt
+        and "B2-2" in txt
+        and "TJ" in txt
+        and "B4-1" in txt
+        and "B5-C" in txt
+        and "L1" in txt
+    )
 
 
 def test_prepare_text_pass_through():
+    """Return text unmodified when it already resembles final content."""
     # если это уже текст (есть перенос или нет .txt) — вернуть как есть
     text = "LINE1\nLINE2"
     got, tdict = ba.prepare(text)
@@ -117,6 +156,7 @@ def test_prepare_text_pass_through():
 
 
 def test_prepare_text_from_file(tmp_path, monkeypatch):
+    """Load content from a filesystem path via prepare and return it."""
     p = tmp_path / "z.txt"
     p.write_text("CONTENT", encoding="utf-8")
     got, _ = ba.prepare(p.as_posix())

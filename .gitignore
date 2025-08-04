@@ -13,3 +13,5 @@ bot.log
 .env
 .replit
 time.txt
+.mypy_cache
+.pytest_cache
