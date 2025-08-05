@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from random import randint
 from time import sleep
 from typing import List, Optional, Tuple
-
+from typing import Any, Dict
 import vk_api  # type: ignore[import-untyped]
 from dotenv import load_dotenv
 
@@ -32,6 +32,9 @@ from typing import Any, Dict
 
 time_dict: Dict[int, datetime] = {}
 tgtg: int = 0
+
+picks = [457239111, 457239115, 457239116, 457239118, 457239119]
+max_blocks = 5
 
 
 def post(_target_group: int, _text: str, _image: int) -> None:
@@ -90,143 +93,57 @@ def parse_duration(spec: str) -> int:
     return days * 86400 + hours * 3600 + mins * 60 + secs
 
 
-# --- NEW: TextBuilder helpers ---
-def load_variants_file(path: str) -> List[Tuple[str, str]]:
-    """Загрузить варианты из файла блоков/тегов/ссылок.
-
-    Формат файла:
-      ##1
-      текст варианта 1
-      ##2
-      текст варианта 2
-      ###name
-      текст именованного варианта
-
-    Args:
-        path (str): Путь к файлу.
-
-    Returns:
-        list[tuple[str, str]]: Список пар (идентификатор, содержимое).
-
-    Notes:
-        Разделение выполняется по заголовкам строк вида '##' или '###' в начале строки.
-
-    Examples:
-        >>> # load_variants_file("files/block1.txt")  # doctest: +SKIP
-    """
-    variants: List[Tuple[str, str]] = []
+def load_file(path: str) -> List[str]:
+    parts: List[str] = []
     if not os.path.exists(path):
-        return variants
+        return parts
     with open(path, "r", encoding="utf-8") as f:
         content = f.read()
-    parts = re.split(r"^#{2,3}([^\r\n]+)\s*$", content, flags=re.MULTILINE)
-    for i in range(1, len(parts), 2):
-        vid_raw = parts[i].strip()
-        vid = vid_raw.lstrip("#").strip()
-        body = parts[i + 1].strip()
-        variants.append((vid, body))
-    return variants
+        parts = content.split('---')
+        for x in range(len(parts)):
+            parts[x] = parts[x].strip('\n')
+    return parts
 
 
-def pick_variant(variants: List[Tuple[str, str]], desired: Optional[str]) -> Tuple[str, Optional[str]]:
-    """Выбрать нужный или случайный вариант из загруженного списка.
-
-    Args:
-        variants (list[tuple[str, str]]): Список пар (id, текст).
-        desired (str | None): Идентификатор варианта или '-' для случайного, None — случайный.
-
-    Returns:
-        tuple[str, str|None]: (текст выбранного варианта, id выбранного варианта или None если вариантов нет)
-
-    Examples:
-        >>> pick_variant([("1", "A"), ("2", "B")], "2")[0] == "B"
-        True
-        >>> pick_variant([("1", "A")], "-")[0] in ("A",)
-        True
-    """
+def pick_variant(variants: List[str], desired: Optional[str]):
     if not variants:
-        return "", None
-    if desired is None or desired == "-":
-        vid, body = random.choice(variants)
-        return body, vid
-    for vid, body in variants:
-        if vid == desired:
-            return body, vid
-    vid, body = random.choice(variants)
-    return body, vid
+        return ''
+    if not (desired is None) or desired != "-":
+        for vid in variants:
+            pref_id = vid.find('|')
+            if vid[:pref_id] == desired:
+                return vid[pref_id+1:]
+    vid = random.choice(variants)
+    return vid[vid.find('|')+1:]
 
 
-def build_text(
-    tags_var: Optional[str],
-    b1_var: Optional[str],
-    b2_var: Optional[str],
-    b3_var: Optional[str],
-    b4_var: Optional[str],
-    b5_var: Optional[str],
-    links_var: Optional[str],
-) -> Tuple[str, dict]:
-    """Собрать итоговый текст поста из набора блоков.
-
-    Источники:
-      - files/tags.txt
-      - files/block1.txt .. files/block5.txt
-      - files/links.txt
-
-    Args:
-        tags_var (str | None): Вариант для тегов.
-        b1_var (str | None): Вариант для блока 1.
-        b2_var (str | None): Вариант для блока 2.
-        b3_var (str | None): Вариант для блока 3.
-        b4_var (str | None): Вариант для блока 4.
-        b5_var (str | None): Вариант для блока 5.
-        links_var (str | None): Вариант для ссылки.
-
-    Returns:
-        tuple[str, dict]: (Собранный текст поста, карта выбранных вариантов по блокам {'tags': 'id', 'b1': 'id', ...})
-
-    Examples:
-        >>> # build_text("-", "-", "-", "-", "-", "-", "-")  # doctest: +SKIP
-    """
-    tags = load_variants_file("files/tags.txt")
-    b1 = load_variants_file("files/block1.txt")
-    b2 = load_variants_file("files/block2.txt")
-    b3 = load_variants_file("files/block3.txt")
-    b4 = load_variants_file("files/block4.txt")
-    b5 = load_variants_file("files/block5.txt")
-    links = load_variants_file("files/links.txt")
-
-    parts = []
-    chosen_ids: dict = {}
-    tv, tv_id = pick_variant(tags, tags_var)
-    if tv:
-        parts.append(tv)
-    if tv_id is not None:
-        chosen_ids["tags"] = tv_id
-
-    for name, v, vv in [
-        ("b1", b1, b1_var),
-        ("b2", b2, b2_var),
-        ("b3", b3, b3_var),
-        ("b4", b4, b4_var),
-        ("b5", b5, b5_var),
-    ]:
-        pv, pv_id = pick_variant(v, vv)
-        if pv:
-            parts.append(pv)
-        if pv_id is not None:
-            chosen_ids[name] = pv_id
-
-    lv, lv_id = pick_variant(links, links_var)
-    if lv:
-        parts.append(lv)
-    if lv_id is not None:
-        chosen_ids["links"] = lv_id
-
-    # Соединяем блоки пустой строкой между ними
-    built = "\n\n".join(p.strip() for p in parts if p.strip())
-    return built, chosen_ids
+def build_text(desirements: Optional[List[str]]):
+    result = ''
+    tags = load_file('files/tags.txt')
+    tags = pick_variant(tags, desirements[0]) if desirements else random.choice(tags)
+    result += tags + '\n'
+    blocks_amount = 2 + random.randint(1, 3)
+    for i in range(1, blocks_amount):
+        variants = load_file(f'files/block{i}')
+        variants = pick_variant(variants, desirements[i]) if desirements[i] != '-' else random.choice(variants)
+        result += variants + '\n'
+    return result, blocks_amount
 
 
+def parse(data: str) -> Tuple[str, str, Optional:List[str]]:
+    has_desirements = data.find('[') > -1
+    _timer = None
+    _group, _timer = data[: data.find(':')], data[data.find('|') + 1:]
+    if has_desirements:
+        des_list = data[data.find('[')+1:data.find(']')].split(':')
+        if des_list.count('-') == max_blocks+1:
+            des_list = None
+    else:
+        des_list = None
+    return _group, _timer, des_list
+
+
+'''
 def parse(_string: str) -> Tuple[int, str, int, Optional[int], dict]:
     """Распарсить строку groups.txt (новый и старый форматы).
 
@@ -328,75 +245,13 @@ def parse(_string: str) -> Tuple[int, str, int, Optional[int], dict]:
         # built_preview будет сформирован после чтения файла в prepare(), поэтому здесь пусто
         template_meta["built_preview"] = ""
         return _group_int, _text, _image_int, _timer, template_meta
-
-
-from typing import Any, Dict
-
-def prepare(_text_or_built: str) -> Tuple[str, Dict[Any, Any]]:
-    """Подготовить текст к публикации и загрузить кэш времени.
-
-    Старый формат:
-      - Если пришёл путь к файлу или '-', загрузить текст из файла.
-    Новый формат:
-      - Если пришёл уже собранный текст (есть переносы строк или нет .txt), вернуть как есть.
-
-    Args:
-        _text_or_built (str): Путь к файлу, '-' или готовый текст.
-
-    Returns:
-        tuple[str, dict|None]: (текст_поста, словарь_времени|пустой словарь)
-
-    Notes:
-        Безопасно читает files/dumping.pkl; создаёт файл при отсутствии.
-
-    Examples:
-        >>> txt, td = prepare("files/text1.txt")  # doctest: +SKIP
-    """
-    _time_dict: Dict[Any, Any] = {}
-
-    # Решаем, читать ли файл текста (старый формат)
-    if _text_or_built != "-" and (
-        ("\n" in _text_or_built) or (".txt" not in _text_or_built)
-    ):
-        _text = _text_or_built
-    else:
-        _text = _text_or_built
-        if _text == "-":
-            _text = "files/text" + str(random.randint(1, 5)) + ".txt"
-        try:
-            with open(_text, "r", encoding="utf-8") as f:
-                _text = f.read()
-        except Exception as e:
-            module_logger.eLog(f"Failed to read text file '{_text}': {e}")
-            _text = ""
-
-    # безопасная загрузка словаря времени
-    try:
-        if (
-            os.path.exists("files/dumping.pkl")
-            and os.path.getsize("files/dumping.pkl") > 0
-        ):
-            with open("files/dumping.pkl", "rb") as _p:
-                loaded = pickle.load(_p)
-                if isinstance(loaded, dict):
-                    _time_dict = loaded
-                else:
-                    _time_dict = {}
-        else:
-            # убедимся, что файл существует
-            os.makedirs("files", exist_ok=True)
-            open("files/dumping.pkl", "ab").close()
-    except Exception as e:
-        module_logger.eLog(f"Failed to load dumping.pkl: {e}")
-        _time_dict = {}
-
-    return _text, _time_dict
-
+'''
 
 from typing import Any, Mapping, Union, cast
 
 VKPost = Mapping[str, Any]
 MaybePost = Union[VKPost, None, int]
+
 
 def get_last_post(_tg: int) -> MaybePost:
     """Получить последний пост, связанный с ботом, на стене группы.
@@ -461,10 +316,6 @@ def check_suggests(_tg: int, time_s: int) -> int:
 
     Notes:
         Пустая предложка и превышение порога времени => постить.
-
-    Examples:
-        >>> # check_suggests(156716828, 43200) in (-1, 0, 1)  # doctest: +SKIP
-        True
     """
     try:
         suggested_posts = vk.wall.get(owner_id=-_tg, filter="suggests")
@@ -523,12 +374,6 @@ def choose_time(_timer: Optional[int]) -> int:
 
     Returns:
         int: Число секунд ожидания.
-
-    Examples:
-        >>> choose_time(None) == wait_time
-        True
-        >>> choose_time(10) == 10
-        True
     """
     if _timer is None:
         return wait_time
@@ -539,14 +384,16 @@ def choose_time(_timer: Optional[int]) -> int:
 if __name__ == "__main__":
     # Запускаем основной цикл только при прямом запуске скрипта,
     # чтобы при импорте в pytest не блокировать сбор тестов.
+    # Vir: Ты конч нахуй? Ладно хуй с тобой пусть будет
     while True:
         try:
             with open("files/groups.txt", "r", encoding="utf-8") as file:
                 module_logger.eLog("STARTING FULL CYCLE")
-                timef = open("files/time.txt", "w+", encoding="utf-8")
-                timef.write(str(datetime.now()))
-                timef.flush()
-                timef.close()
+                # timef = open("files/time.txt", "w+", encoding="utf-8")
+                # timef.write(str(datetime.now()))
+                # timef.flush()
+                # timef.close()
+                # Vir: нахуй оно надо вообще?
                 while True:
                     string = file.readline()
                     if not string:
@@ -557,20 +404,14 @@ if __name__ == "__main__":
                     if skip == 1:
                         skip = 0
                         continue
-                    target_group, text_or_path_built, image, timer, template_meta = parse(string)
+                    target_group, timer, template_meta = parse(string)
                     tgtg = target_group
-                    text, time_dict = prepare(text_or_path_built)
-                    # Дополняем превью для старого формата после чтения из файла
-                    if template_meta.get("built_preview") == "":
-                        preview = " ".join(text.splitlines())
-                        template_meta["built_preview"] = (preview[:300] + ("..." if len(preview) > 300 else ""))
-                    # Логируем использованный шаблон
-                    module_logger.Log(
-                        f"Template for group {target_group}: "
-                        f"effective_segments={template_meta.get('effective_segments', template_meta.get('segments'))}, "
-                        f"delay={template_meta.get('delay_spec')}, "
-                        f"image_id={template_meta.get('image_id')}"
-                    )
+                    text, amount = build_text(template_meta)
+                    image = random.choice(picks) if random.randint(1, 4) == 4 and amount < 4 else None
+                    time_dict = {}
+                    with open('files/dumping.pkl', 'rb+') as _p:
+                        if os.stat('files/dumping.pkl').st_size != 0:
+                            time_dict = pickle.load(_p)
                     module_logger.Log(f"Now working with group {target_group}")
 
                     group = vk.groups.getById(group_id=target_group, fields="wall")
