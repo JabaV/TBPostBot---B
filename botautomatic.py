@@ -37,7 +37,7 @@ picks = [457239111, 457239115, 457239116, 457239118, 457239119]
 max_blocks = 5
 
 
-def post(_target_group: int, _text: str, _image: int) -> None:
+def post(_target_group: int, _text: str, _image: Optional[int]) -> None:
     """Опубликовать пост в заданной группе VK.
 
     Args:
@@ -47,16 +47,15 @@ def post(_target_group: int, _text: str, _image: int) -> None:
 
     Returns:
         None
-
-    Raises:
-        vk_api.ApiError: Ошибки VK API при публикации.
-
-    Examples:
-        >>> # post(156716828, "Пример поста", 457239113)  # doctest: +SKIP
     """
-    vk.wall.post(
-        owner_id=-_target_group, message=_text, attachments=f"photo{bot_id}_{_image}"
-    )
+    if _image is None:
+        vk.wall.post(
+            owner_id=-_target_group, message=_text
+        )
+    else:
+        vk.wall.post(
+            owner_id=-_target_group, message=_text, attachments=f"photo{bot_id}_{_image}"
+        )
 
 
 def parse_duration(spec: str) -> int:
@@ -253,11 +252,12 @@ VKPost = Mapping[str, Any]
 MaybePost = Union[VKPost, None, int]
 
 
-def get_last_post(_tg: int) -> MaybePost:
+def get_last_post(_tg: int, wt: int) -> MaybePost:
     """Получить последний пост, связанный с ботом, на стене группы.
 
     Args:
         _tg (int): Идентификатор группы.
+        wt (int): тип стены группы
 
     Returns:
         dict | None | int: Объект поста VK, None если не найден, или -1 при ошибке.
@@ -268,12 +268,10 @@ def get_last_post(_tg: int) -> MaybePost:
     Examples:
         >>> # get_last_post(156716828)  # doctest: +SKIP
     """
-    last_post: Optional[VKPost] = None
+    last_post = None
     try:
         count = 2
         while count:
-            group_info = vk.groups.getById(group_id=_tg, fields="wall")
-            wt = group_info[0]["wall"]
             posts = vk.wall.get(
                 owner_id=-_tg, offset=0 if count == 2 else 100, count=100
             )["items"]
@@ -297,8 +295,7 @@ def get_last_post(_tg: int) -> MaybePost:
             else:
                 module_logger.Log(f"Last bot-related post found in group {_tg}")
                 return last_post
-        # Возвращаем None, если не найдено
-        return None
+        return last_post
     except Exception as e:
         module_logger.eLog(f"get_last_post({_tg}) failed: {e}")
         return -1
@@ -306,6 +303,7 @@ def get_last_post(_tg: int) -> MaybePost:
 
 def check_suggests(_tg: int, time_s: int) -> int:
     """Решить, нужно ли постить в стенах 2/3 с учётом предложки.
+    Группы с типом стены 3 определяются как 2, т.к. для них одинаковое поведение
 
     Args:
         _tg (int): Идентификатор группы.
@@ -323,7 +321,7 @@ def check_suggests(_tg: int, time_s: int) -> int:
         module_logger.eLog(f"check_suggests({_tg}) get suggests failed: {e}")
         return -1
 
-    last_pst = get_last_post(_tg)
+    last_pst = get_last_post(_tg, 2)
     if len(suggested_posts.get("items", [])) < 1:
         if _tg in time_dict:
             if datetime.now() - time_dict[_tg] >= timedelta(seconds=time_s):
@@ -389,17 +387,12 @@ if __name__ == "__main__":
         try:
             with open("files/groups.txt", "r", encoding="utf-8") as file:
                 module_logger.eLog("STARTING FULL CYCLE")
-                # timef = open("files/time.txt", "w+", encoding="utf-8")
-                # timef.write(str(datetime.now()))
-                # timef.flush()
-                # timef.close()
-                # Vir: нахуй оно надо вообще?
                 while True:
                     string = file.readline()
                     if not string:
                         break
-                    # Комментарии: пропускаем строки, начинающиеся с "# " (решётка и пробел)
-                    if string.lstrip().startswith("# "):
+                    # Комментарии: пропускаем строки, начинающиеся с "#"
+                    if string.lstrip().startswith("#"):
                         continue
                     if skip == 1:
                         skip = 0
@@ -442,7 +435,7 @@ if __name__ == "__main__":
                     elif wall_type == 1:
                         temp_time = choose_time(timer)
                         module_logger.Log(f"Choosed time to post: {temp_time}s")
-                        last_bot_post = get_last_post(target_group)
+                        last_bot_post = get_last_post(target_group, wall_type)
                         if last_bot_post is None:
                             module_logger.Log("Can't find my post! Posting right now...")
                             vk.account.setOnline()
