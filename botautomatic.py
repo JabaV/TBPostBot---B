@@ -80,7 +80,7 @@ def parse_duration(spec: str) -> int:
     """
     if not spec:
         return wait_time
-    pattern = r"(?:(?P<d>\d+)d)?(?:(?P<h>\d+)h)?(?:(?P<m>\d+)m)?(?:(?P<s>\d+)s)?"
+    pattern = r"((?P<d>\d+)d)?((?P<h>\d+)h)?((?P<m>\d+)m)?((?P<s>\d+)s)?"
     m = re.fullmatch(pattern, spec.strip())
     if not m:
         module_logger.eLog(f"Bad delay format '{spec}', using default wait_time")
