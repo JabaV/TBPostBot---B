@@ -22,7 +22,9 @@ if not token:
     raise RuntimeError("VK API token is missing. Define TOKEN in .env or environment.")
 
 # дефолтная пауза между постами, если не указана в groups.txt
-wait_time: int = int(os.environ.get("DEFAULT_WAIT_TIME", str(60 * 60 * 12)))
+wait_time: int = int(os.environ.get("DEFAULT_WAIT_TIME"))
+
+max_blocks: int = int(os.environ['MAX_BLOCKS'])
 
 vk_session = vk_api.VkApi(token=token)
 vk = vk_session.get_api()
@@ -34,7 +36,6 @@ time_dict: Dict[int, datetime] = {}
 tgtg: int = 0
 
 picks = [457239111, 457239115, 457239116, 457239118, 457239119]
-max_blocks = 6
 
 
 def post(_target_group: int, _text: str, _image: Optional[int]) -> None:
@@ -120,11 +121,13 @@ def build_text(desirements: Optional[List[str]]):
     result = ''
     tags = load_file('files/tags.txt')
     tags = pick_variant(tags, desirements[0]) if desirements else random.choice(tags)
-    result += tags + '\n'
+    result += tags[tags.find('|')+1:] + '\n'
     blocks_amount = random.randint(3, max_blocks)
     for i in range(1, blocks_amount):
-        variants = load_file(f'files/block{i}')
+        variants = load_file(f'files/block{i}.txt')
         variants = pick_variant(variants, desirements[i]) if desirements[i] != '-' else random.choice(variants)
+        if variants.__contains__('|'):
+            variants = variants[variants.find('|')+1:]
         result += variants + '\n'
     return result, blocks_amount
 
@@ -281,7 +284,7 @@ if __name__ == "__main__":
     while True:
         try:
             with open("files/groups.txt", "r", encoding="utf-8") as file:
-                module_logger.eLog("STARTING FULL CYCLE")
+                module_logger.Log("STARTING FULL CYCLE")
                 while True:
                     string = file.readline()
                     if not string:
