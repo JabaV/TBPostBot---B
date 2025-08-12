@@ -18,3 +18,5 @@ time.txt
 error_log.txt
 /site
 /files/dumping.pkl
+.vscode\settings.json
+.vscode
