@@ -34,7 +34,7 @@ time_dict: Dict[int, datetime] = {}
 tgtg: int = 0
 
 picks = [457239111, 457239115, 457239116, 457239118, 457239119]
-max_blocks = 5
+max_blocks = 6
 
 
 def post(_target_group: int, _text: str, _image: Optional[int]) -> None:
@@ -121,7 +121,7 @@ def build_text(desirements: Optional[List[str]]):
     tags = load_file('files/tags.txt')
     tags = pick_variant(tags, desirements[0]) if desirements else random.choice(tags)
     result += tags + '\n'
-    blocks_amount = 2 + random.randint(1, 3)
+    blocks_amount = random.randint(3, max_blocks)
     for i in range(1, blocks_amount):
         variants = load_file(f'files/block{i}')
         variants = pick_variant(variants, desirements[i]) if desirements[i] != '-' else random.choice(variants)
@@ -302,7 +302,11 @@ if __name__ == "__main__":
                             time_dict = pickle.load(_p)
                     module_logger.Log(f"Now working with group {target_group}")
 
-                    group = vk.groups.getById(group_id=target_group, fields="wall")
+                    group = vk.groups.getById(group_id=target_group, fields="wall, activity")
+                    is_banned = 1 if str(group[0]['activity']).startswith('Данный материал') else 0
+                    if is_banned:
+                        module_logger.Log(f'Group {target_group} is banned by RCW, please remove such entry from list')
+                        continue
                     wall_type = group[0]["wall"]
                     module_logger.Log("Got the wall type")
 

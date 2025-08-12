@@ -54,7 +54,7 @@ def eLog(error: Any) -> None:
     Examples:
         >>> eLog("Test error")  # doctest: +SKIP
     """
-    elog.write(f"[{_ts()}] {str(error)}\n")
+    elog.write(f"[{_ts()}] ERROR: {str(error)}\n")
     elog.flush()
 
 
@@ -70,5 +70,5 @@ def Log(action: Any) -> None:
     Examples:
         >>> Log("Started")  # doctest: +SKIP
     """
-    log.write(f"[{_ts()}] {str(action)}\n")
+    log.write(f"[{_ts()}] INFO: {str(action)}\n")
     log.flush()
