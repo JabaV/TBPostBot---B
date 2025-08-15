@@ -38,10 +38,10 @@ picks = [457239111, 457239115, 457239116, 457239118, 457239119]
 
 def post(_target_group: int, _text: str, _image: Optional[int]) -> None:
     if _image is None:
-        vk.wall.post(owner_id=int("-"+str(_target_group)), message=_text)
+        vk.wall.post(owner_id='-'+str(_target_group), message=_text)
     else:
         vk.wall.post(
-            owner_id=int("-"+str(_target_group)),
+            owner_id='-'+str(_target_group),
             message=_text,
             attachments=f"photo{bot_id}_{_image}",
         )
@@ -159,7 +159,7 @@ def get_last_post(_tg: int, wt: int) -> MaybePost:
 
 def check_suggests(_tg: int, time_s: int) -> int:
     try:
-        suggested_posts = vk.wall.get(owner_id=-_tg, filter="suggests")
+        suggested_posts = vk.wall.get(owner_id='-'+str(_tg), filter="suggests")
     except Exception as e:
         module_logger.eLog(f"check_suggests({_tg}) get suggests failed: {e}")
         return -1
