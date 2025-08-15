@@ -39,16 +39,6 @@ picks = [457239111, 457239115, 457239116, 457239118, 457239119]
 
 
 def post(_target_group: int, _text: str, _image: Optional[int]) -> None:
-    """Опубликовать пост в заданной группе VK.
-
-    Args:
-        _target_group (int): Идентификатор сообщества (без знака).
-        _text (str): Текст поста.
-        _image (int): Идентификатор фото (часть attachments вида photo{bot_id}_{_image}).
-
-    Returns:
-        None
-    """
     if _image is None:
         vk.wall.post(
             owner_id=-_target_group, message=_text
@@ -60,17 +50,6 @@ def post(_target_group: int, _text: str, _image: Optional[int]) -> None:
 
 
 def parse_duration(spec: str) -> int:
-    """Преобразовать строку длительности в секунды.
-
-    Поддерживаемый формат: '1d2h3m4s', части опциональны, порядок фиксирован (d→h→m→s).
-    При некорректном формате возвращается значение по умолчанию (wait_time) и логируется ошибка.
-
-    Args:
-        spec (str): Спецификация длительности. Может быть пустой строкой.
-
-    Returns:
-        int: Длительность в секундах.
-    """
     if not spec:
         return wait_time
     pattern = r"((?P<d>\d+)d)?((?P<h>\d+)h)?((?P<m>\d+)m)?((?P<s>\d+)s)?"
@@ -144,21 +123,6 @@ MaybePost = Union[VKPost, None, int]
 
 
 def get_last_post(_tg: int, wt: int) -> MaybePost:
-    """Получить последний пост, связанный с ботом, на стене группы.
-
-    Args:
-        _tg (int): Идентификатор группы.
-        wt (int): тип стены группы
-
-    Returns:
-        dict | None | int: Объект поста VK, None если не найден, или -1 при ошибке.
-
-    Notes:
-        Для стен типа 1 ищется from_id == bot_id, для 2/3 — signer_id == bot_id.
-
-    Examples:
-        >>> # get_last_post(156716828)  # doctest: +SKIP
-    """
     last_post = None
     try:
         count = 2
@@ -193,19 +157,6 @@ def get_last_post(_tg: int, wt: int) -> MaybePost:
 
 
 def check_suggests(_tg: int, time_s: int) -> int:
-    """Решить, нужно ли постить в стенах 2/3 с учётом предложки.
-    Группы с типом стены 3 определяются как 2, т.к. для них одинаковое поведение
-
-    Args:
-        _tg (int): Идентификатор группы.
-        time_s (int): Порог времени в секундах.
-
-    Returns:
-        int: 1 — постить; 0 — не постить; -1 — ошибка (например, VK API error).
-
-    Notes:
-        Пустая предложка и превышение порога времени => постить.
-    """
     try:
         suggested_posts = vk.wall.get(owner_id=-_tg, filter="suggests")
     except Exception as e:
@@ -256,9 +207,6 @@ def check_suggests(_tg: int, time_s: int) -> int:
 
 
 if __name__ == "__main__":
-    # Запускаем основной цикл только при прямом запуске скрипта,
-    # чтобы при импорте в pytest не блокировать сбор тестов.
-    # Vir: Ты конч нахуй? Ладно хуй с тобой пусть будет
     while True:
         try:
             with open("files/groups.txt", "r", encoding="utf-8") as file:
