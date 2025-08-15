@@ -93,7 +93,7 @@ def build_text(desirements: Optional[List[str]]):
     tags = load_file('files/tags.txt')
     tags = pick_variant(tags, desirements[0]) if desirements else random.choice(tags)
     result += tags[tags.find('|')+1:] + '\n'
-    blocks_amount = random.randint(3, max_blocks)
+    blocks_amount = max_blocks
     for i in range(1, blocks_amount):
         variants = load_file(f'files/block{i}.txt')
         variants = pick_variant(variants, desirements[i]) if desirements[i] != '-' else random.choice(variants)
@@ -225,7 +225,7 @@ if __name__ == "__main__":
                     tgtg = target_group
                     timer = parse_duration(timer)
                     text, amount = build_text(template_meta)
-                    image = random.choice(picks) if random.randint(1, 4) == 4 and amount < 4 else None
+                    image = random.choice(picks) if random.randint(1, 4) == 4 else None
                     time_dict = {}
                     with open('files/dumping.pkl', 'rb+') as _p:
                         if os.stat('files/dumping.pkl').st_size != 0:
