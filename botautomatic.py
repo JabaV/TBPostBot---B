@@ -70,14 +70,6 @@ def parse_duration(spec: str) -> int:
 
     Returns:
         int: Длительность в секундах.
-
-    Examples:
-        >>> parse_duration("1d2h3m4s") >= 1*86400 + 2*3600 + 3*60 + 4
-        True
-        >>> parse_duration("2h") == 7200
-        True
-        >>> parse_duration("") == wait_time
-        True
     """
     if not spec:
         return wait_time
@@ -129,6 +121,7 @@ def build_text(desirements: Optional[List[str]]):
         if variants.__contains__('|'):
             variants = variants[variants.find('|')+1:]
         result += variants + '\n'
+    result += '@topbossfights'
     return result, blocks_amount
 
 
@@ -171,7 +164,7 @@ def get_last_post(_tg: int, wt: int) -> MaybePost:
         count = 2
         while count:
             posts = vk.wall.get(
-                owner_id=-_tg, offset=0 if count == 2 else 100, count=100
+                owner_id='-'+str(_tg), offset=0 if count == 2 else 100, count=100
             )["items"]
             if len(posts) < 1:
                 module_logger.Log(
@@ -262,21 +255,6 @@ def check_suggests(_tg: int, time_s: int) -> int:
     return 0
 
 
-def choose_time(_timer: Optional[int]) -> int:
-    """Выбрать время ожидания до следующего поста.
-
-    Args:
-        _timer (int | None): Значение таймера или None.
-
-    Returns:
-        int: Число секунд ожидания.
-    """
-    if _timer is None:
-        return wait_time
-    else:
-        return _timer
-
-
 if __name__ == "__main__":
     # Запускаем основной цикл только при прямом запуске скрипта,
     # чтобы при импорте в pytest не блокировать сбор тестов.
@@ -297,6 +275,7 @@ if __name__ == "__main__":
                         continue
                     target_group, timer, template_meta = parse(string)
                     tgtg = target_group
+                    timer = parse_duration(timer)
                     text, amount = build_text(template_meta)
                     image = random.choice(picks) if random.randint(1, 4) == 4 and amount < 4 else None
                     time_dict = {}
@@ -314,7 +293,7 @@ if __name__ == "__main__":
                     module_logger.Log("Got the wall type")
 
                     if wall_type == 2 or wall_type == 3:
-                        should_post = check_suggests(target_group, choose_time(timer))
+                        should_post = check_suggests(target_group, wait_time if timer is None else timer)
                         module_logger.Log(
                             f"Should I post in group {target_group}? result={should_post}"
                         )
@@ -335,7 +314,7 @@ if __name__ == "__main__":
                             sleep(randint(30, 468))
                             continue
                     elif wall_type == 1:
-                        temp_time = choose_time(timer)
+                        temp_time = wait_time if timer is None else timer
                         module_logger.Log(f"Choosed time to post: {temp_time}s")
                         last_bot_post = get_last_post(target_group, wall_type)
                         if last_bot_post is None:
@@ -345,9 +324,7 @@ if __name__ == "__main__":
                         elif last_bot_post != -1:
                             module_logger.Log("Found a post, evaluating time threshold")
                             post_time = cast(VKPost, last_bot_post)["date"]
-                            if datetime.fromtimestamp(
-                                post_time
-                            ) <= datetime.now() - timedelta(seconds=temp_time):
+                            if datetime.fromtimestamp(post_time) <= datetime.now() - timedelta(seconds=temp_time):
                                 module_logger.Log("Threshold passed — posting")
                                 vk.account.setOnline()
                                 post(target_group, text, image)
@@ -361,7 +338,7 @@ if __name__ == "__main__":
                     vk.account.setOffline()
                     module_logger.Log("Sleep for next iteration")
                 sleep(3)
-                module_logger.eLog("FULL ITERATION PAST")
+                module_logger.Log("FULL ITERATION PAST")
         except Exception as e:
             module_logger.eLog(str(tgtg) + " " + str(e))
             sleep(60)
