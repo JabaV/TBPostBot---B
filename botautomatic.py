@@ -5,9 +5,8 @@ import re
 from datetime import datetime, timedelta
 from random import randint
 from time import sleep
-from typing import List, Optional, Tuple
-from typing import Any, Dict
-import vk_api  # type: ignore[import-untyped]
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union, cast
+import vk_api
 from dotenv import load_dotenv
 
 from modules import module_logger
@@ -24,13 +23,12 @@ if not token:
 # дефолтная пауза между постами, если не указана в groups.txt
 wait_time: int = int(os.environ.get("DEFAULT_WAIT_TIME"))
 
-max_blocks: int = int(os.environ['MAX_BLOCKS'])
+max_blocks: int = int(os.environ["MAX_BLOCKS"])
 
 vk_session = vk_api.VkApi(token=token)
 vk = vk_session.get_api()
 bot_id = vk.users.get()[0]["id"]
 
-from typing import Any, Dict
 
 time_dict: Dict[int, datetime] = {}
 tgtg: int = 0
@@ -40,12 +38,12 @@ picks = [457239111, 457239115, 457239116, 457239118, 457239119]
 
 def post(_target_group: int, _text: str, _image: Optional[int]) -> None:
     if _image is None:
-        vk.wall.post(
-            owner_id=-_target_group, message=_text
-        )
+        vk.wall.post(owner_id=-_target_group, message=_text)
     else:
         vk.wall.post(
-            owner_id=-_target_group, message=_text, attachments=f"photo{bot_id}_{_image}"
+            owner_id=-_target_group,
+            message=_text,
+            attachments=f"photo{bot_id}_{_image}",
         )
 
 
@@ -70,53 +68,56 @@ def load_file(path: str) -> List[str]:
         return parts
     with open(path, "r", encoding="utf-8") as f:
         content = f.read()
-        parts = content.split('---')
+        parts = content.split("---")
         for x in range(len(parts)):
-            parts[x] = parts[x].strip('\n')
+            parts[x] = parts[x].strip("\n")
     return parts
 
 
 def pick_variant(variants: List[str], desired: Optional[str]):
     if not variants:
-        return ''
+        return ""
     if desired is not None or desired != "-":
         for vid in variants:
-            pref_id = vid.find('|')
+            pref_id = vid.find("|")
             if vid[:pref_id] == desired:
-                return vid[pref_id+1:]
+                return vid[pref_id + 1 :]
     vid = random.choice(variants)
-    return vid[vid.find('|')+1:]
+    return vid[vid.find("|") + 1 :]
 
 
 def build_text(desirements: Optional[List[str]]):
-    result = ''
-    tags = load_file('files/tags.txt')
+    result = ""
+    tags = load_file("files/tags.txt")
     tags = pick_variant(tags, desirements[0]) if desirements else random.choice(tags)
-    result += tags[tags.find('|')+1:] + '\n'
+    result += tags[tags.find("|") + 1 :] + "\n"
     blocks_amount = max_blocks
     for i in range(1, blocks_amount):
-        variants = load_file(f'files/block{i}.txt')
-        variants = pick_variant(variants, desirements[i]) if desirements[i] != '-' else random.choice(variants)
-        if variants.__contains__('|'):
-            variants = variants[variants.find('|')+1:]
-        result += variants + '\n'
-    result += '@topbossfights'
+        variants = load_file(f"files/block{i}.txt")
+        variants = (
+            pick_variant(variants, desirements[i])
+            if desirements[i] != "-"
+            else random.choice(variants)
+        )
+        if variants.__contains__("|"):
+            variants = variants[variants.find("|") + 1 :]
+        result += variants + "\n"
+    result += "@topbossfights"
     return result, blocks_amount
 
 
-def parse(data: str) -> Tuple[str, str, Optional:List[str]]:
-    has_desirements = data.find('[') > -1
+def parse(data: str) -> Tuple[str, str, Optional : List[str]]:
+    has_desirements = data.find("[") > -1
     _timer = None
-    _group, _timer = data[: data.find(':')], data[data.find('|') + 1:]
+    _group, _timer = data[: data.find(":")], data[data.find("|") + 1 :]
     if has_desirements:
-        des_list = data[data.find('[')+1:data.find(']')].split(':')
-        if des_list.count('-') == max_blocks+1:
+        des_list = data[data.find("[") + 1 : data.find("]")].split(":")
+        if des_list.count("-") == max_blocks + 1:
             des_list = None
     else:
         des_list = None
     return _group, _timer, des_list
 
-from typing import Any, Mapping, Union, cast
 
 VKPost = Mapping[str, Any]
 MaybePost = Union[VKPost, None, int]
@@ -128,7 +129,7 @@ def get_last_post(_tg: int, wt: int) -> MaybePost:
         count = 2
         while count:
             posts = vk.wall.get(
-                owner_id='-'+str(_tg), offset=0 if count == 2 else 100, count=100
+                owner_id="-" + str(_tg), offset=0 if count == 2 else 100, count=100
             )["items"]
             if len(posts) < 1:
                 module_logger.Log(
@@ -176,9 +177,9 @@ def check_suggests(_tg: int, time_s: int) -> int:
         elif last_pst is not None:
             if last_pst != -1:
                 lp = cast(VKPost, last_pst)
-                if datetime.now() - datetime.fromtimestamp(
-                    lp["date"]
-                ) >= timedelta(seconds=time_s):
+                if datetime.now() - datetime.fromtimestamp(lp["date"]) >= timedelta(
+                    seconds=time_s
+                ):
                     module_logger.Log(
                         f"Last post older than threshold in group {_tg} — ready to post"
                     )
@@ -227,21 +228,31 @@ if __name__ == "__main__":
                     text, amount = build_text(template_meta)
                     image = random.choice(picks) if random.randint(1, 4) == 4 else None
                     time_dict = {}
-                    with open('files/dumping.pkl', 'rb+') as _p:
-                        if os.stat('files/dumping.pkl').st_size != 0:
+                    with open("files/dumping.pkl", "rb+") as _p:
+                        if os.stat("files/dumping.pkl").st_size != 0:
                             time_dict = pickle.load(_p)
                     module_logger.Log(f"Now working with group {target_group}")
 
-                    group = vk.groups.getById(group_id=target_group, fields="wall, activity")
-                    is_banned = 1 if str(group[0]['activity']).startswith('Данный материал') else 0
+                    group = vk.groups.getById(
+                        group_id=target_group, fields="wall, activity"
+                    )
+                    is_banned = (
+                        1
+                        if str(group[0]["activity"]).startswith("Данный материал")
+                        else 0
+                    )
                     if is_banned:
-                        module_logger.Log(f'Group {target_group} is banned by RCW, please remove such entry from list')
+                        module_logger.Log(
+                            f"Group {target_group} is banned by RCW, please remove such entry from list"
+                        )
                         continue
                     wall_type = group[0]["wall"]
                     module_logger.Log("Got the wall type")
 
                     if wall_type == 2 or wall_type == 3:
-                        should_post = check_suggests(target_group, wait_time if timer is None else timer)
+                        should_post = check_suggests(
+                            target_group, wait_time if timer is None else timer
+                        )
                         module_logger.Log(
                             f"Should I post in group {target_group}? result={should_post}"
                         )
@@ -257,7 +268,9 @@ if __name__ == "__main__":
                             except Exception as e:
                                 module_logger.eLog(f"Failed to save dumping.pkl: {e}")
                         if should_post == -1:
-                            module_logger.Log("Decision: do not post due to error state")
+                            module_logger.Log(
+                                "Decision: do not post due to error state"
+                            )
                             vk.account.setOffline()
                             sleep(randint(30, 468))
                             continue
@@ -266,13 +279,17 @@ if __name__ == "__main__":
                         module_logger.Log(f"Choosed time to post: {temp_time}s")
                         last_bot_post = get_last_post(target_group, wall_type)
                         if last_bot_post is None:
-                            module_logger.Log("Can't find my post! Posting right now...")
+                            module_logger.Log(
+                                "Can't find my post! Posting right now..."
+                            )
                             vk.account.setOnline()
                             post(target_group, text, image)
                         elif last_bot_post != -1:
                             module_logger.Log("Found a post, evaluating time threshold")
                             post_time = cast(VKPost, last_bot_post)["date"]
-                            if datetime.fromtimestamp(post_time) <= datetime.now() - timedelta(seconds=temp_time):
+                            if datetime.fromtimestamp(
+                                post_time
+                            ) <= datetime.now() - timedelta(seconds=temp_time):
                                 module_logger.Log("Threshold passed — posting")
                                 vk.account.setOnline()
                                 post(target_group, text, image)
@@ -286,7 +303,7 @@ if __name__ == "__main__":
                     vk.account.setOffline()
                     module_logger.Log("Sleep for next iteration")
                     sleep(5)
-                sleep(parse_duration('6h'))
+                sleep(parse_duration("6h"))
                 module_logger.Log("FULL ITERATION PAST")
         except Exception as e:
             module_logger.eLog(str(tgtg) + " " + str(e))
