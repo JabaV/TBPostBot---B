@@ -252,7 +252,7 @@ if __name__ == "__main__":
                             time_dict[target_group] = datetime.now()
                             module_logger.Log("Posted and saved time")
                             try:
-                                with open("files/dumping.pkl", "wb") as p:
+                                with open("files/dumping.pkl", "wb+") as p:
                                     pickle.dump(time_dict, p)
                             except Exception as e:
                                 module_logger.eLog(f"Failed to save dumping.pkl: {e}")
