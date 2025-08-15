@@ -337,7 +337,8 @@ if __name__ == "__main__":
                             continue
                     vk.account.setOffline()
                     module_logger.Log("Sleep for next iteration")
-                sleep(3)
+                    sleep(5)
+                sleep(parse_duration('6h'))
                 module_logger.Log("FULL ITERATION PAST")
         except Exception as e:
             module_logger.eLog(str(tgtg) + " " + str(e))
