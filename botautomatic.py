@@ -79,7 +79,7 @@ def load_file(path: str) -> List[str]:
 def pick_variant(variants: List[str], desired: Optional[str]):
     if not variants:
         return ''
-    if not (desired is None) or desired != "-":
+    if desired is not None or desired != "-":
         for vid in variants:
             pref_id = vid.find('|')
             if vid[:pref_id] == desired:
