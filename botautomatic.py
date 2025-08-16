@@ -33,7 +33,8 @@ bot_id = vk.users.get()[0]["id"]
 time_dict: Dict[int, datetime] = {}
 tgtg: int = 0
 
-picks = [457239111, 457239115, 457239116, 457239118, 457239119]
+picks = [457239758]
+# [457239111, 457239115, 457239116, 457239118, 457239119]
 
 
 def post(_target_group: int, _text: str, _image: Optional[int]) -> None:
@@ -101,7 +102,7 @@ def build_text(desirements: Optional[List[str]]):
         )
         if variants.__contains__("|"):
             variants = variants[variants.find("|") + 1 :]
-        result += variants + "\n"
+        result += variants + "\n\n"
     result += "@topbossfights"
     return result, blocks_amount
 
