@@ -45,6 +45,7 @@ def post(_target_group: int, _text: str, _image: Optional[int]) -> None:
             owner_id='-'+str(_target_group),
             message=_text,
             attachments=f"photo{bot_id}_{_image}",
+            signed=1
         )
 
 
