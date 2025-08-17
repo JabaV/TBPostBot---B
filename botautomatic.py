@@ -167,7 +167,8 @@ def check_suggests(_tg: int, time_s: int) -> int:
         return -1
 
     last_pst = get_last_post(_tg, 2)
-    if len(suggested_posts.get("items", [])) < 1:
+    my_suggests = [item for item in suggested_posts['items'] if item['owner_id'] == bot_id]
+    if len(my_suggests) < 1:
         if _tg in time_dict:
             if datetime.now() - time_dict[_tg] >= timedelta(seconds=time_s):
                 module_logger.Log(
@@ -198,7 +199,7 @@ def check_suggests(_tg: int, time_s: int) -> int:
                     return 0
             else:
                 return 1
-    suggest_time = suggested_posts["items"][0]["date"]
+    suggest_time = my_suggests[0]["date"]
     if datetime.now() - datetime.fromtimestamp(suggest_time) >= timedelta(
         seconds=time_s
     ):
