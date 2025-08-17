@@ -98,7 +98,7 @@ def build_text(desirements: Optional[List[str]]):
         variants = load_file(f"files/block{i}.txt")
         variants = (
             pick_variant(variants, desirements[i])
-            if desirements[i] != "-"
+            if 0 <= i < len(desirements) and desirements[i] != "-"
             else random.choice(variants)
         )
         if variants.__contains__("|"):
@@ -212,28 +212,26 @@ def check_suggests(_tg: int, time_s: int) -> int:
 
 if __name__ == "__main__":
     while True:
-        try:
-            with open("files/groups.txt", "r", encoding="utf-8") as file:
-                module_logger.Log("STARTING FULL CYCLE")
-                while True:
-                    string = file.readline()
-                    if not string:
-                        break
+        with open("files/groups.txt", "r", encoding="utf-8") as file:
+            module_logger.Log("STARTING FULL CYCLE")
+            with open("files/dumping.pkl", "rb+") as _p:
+                if os.stat("files/dumping.pkl").st_size != 0:
+                    time_dict = pickle.load(_p)
+
+            while string := file.readline():
+                try:
                     # Комментарии: пропускаем строки, начинающиеся с "#"
-                    if string.lstrip().startswith("#"):
-                        continue
-                    if skip == 1:
+                    if skip == 1 or string.lstrip().startswith("#"):
                         skip = 0
                         continue
+
+                    # Pos parameters for group
                     target_group, timer, template_meta = parse(string)
                     tgtg = target_group
                     timer = parse_duration(timer)
                     text, amount = build_text(template_meta)
                     image = random.choice(picks) if random.randint(1, 4) == 4 else None
-                    time_dict = {}
-                    with open("files/dumping.pkl", "rb+") as _p:
-                        if os.stat("files/dumping.pkl").st_size != 0:
-                            time_dict = pickle.load(_p)
+
                     module_logger.Log(f"Now working with group {target_group}")
 
                     group = vk.groups.getById(
@@ -306,9 +304,9 @@ if __name__ == "__main__":
                     vk.account.setOffline()
                     module_logger.Log("Sleep for next iteration")
                     sleep(5)
-                sleep(parse_duration("6h"))
-                module_logger.Log("FULL ITERATION PAST")
-        except Exception as e:
-            module_logger.eLog(str(tgtg) + " " + str(e))
-            sleep(60)
-            skip = 1
+                except Exception as e:
+                    module_logger.eLog(str(tgtg) + " " + str(e))
+                    sleep(60)
+                    skip = 1
+            sleep(parse_duration("6h"))
+            module_logger.Log("FULL ITERATION PAST")
